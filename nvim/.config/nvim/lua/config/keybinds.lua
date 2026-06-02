@@ -177,6 +177,17 @@ vim.keymap.set('n', '<leader>ehx', function()
     end)
 end, { desc = 'Help Tag (new tab)' })
 
+-- Browser Search
+vim.keymap.set('n', '<leader>ws', function()
+    vim.ui.input({ prompt = 'Search: ' }, function(query)
+        if query and #query > 0 then
+            local encoded = vim.fn.substitute(query, ' ', '+', 'g')
+            -- Open w3m in a new tmux split
+            vim.fn.system('tmux split-window -h "w3m https://html.duckduckgo.com/html/?q=' .. encoded .. '"')
+        end
+    end)
+end, { desc = 'Search web in tmux split' })
+
 -- Clear search highlight
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 
@@ -311,3 +322,17 @@ vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { noremap = true, silent = 
 vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<CR>", { noremap = true, silent = true, desc = "Close Tab" })
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { noremap = true, silent = true, desc = "Next Tab" })
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { noremap = true, silent = true, desc = "Previous Tab" })
+
+vim.keymap.set('n', '<leader>tl', function()
+    vim.cmd('tabs')
+    vim.ui.input({ prompt = 'Tab number (Enter to cancel, q to quit): ' }, function(input)
+        if input and #input > 0 and input ~= 'q' then
+            local ok = pcall(function()
+                vim.cmd('tabnext ' .. input)
+            end)
+            if not ok then
+                vim.notify('Invalid tab number', vim.log.levels.ERROR)
+            end
+        end
+    end)
+end, { desc = 'List tabs and switch' })

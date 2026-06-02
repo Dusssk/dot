@@ -20,6 +20,7 @@ vim.api.nvim_set_hl(0, 'Normal', { bg = normal_bg })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = normal_bg })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = normal_bg })
 vim.api.nvim_set_hl(0, 'LspHover', { bg = normal_bg })
+vim.api.nvim_set_hl(0, 'NormalNC', { bg = normal_bg })
 
 -- Force true color inside tmux
 if vim.env.TMUX then
