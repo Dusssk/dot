@@ -1,0 +1,376 @@
+23:59:23 [INFO] Starting GoXLR Daemon v1.2.4
+23:59:23 [INFO] System Locale: en_SE
+23:59:23 [INFO] Performing Platform Preflight...
+23:59:23 [DEBUG] (1) goxlr_daemon: HTTP Bind Address: localhost
+23:59:23 [INFO] Created Path: /home/dusk/.local/share/goxlr-utility/presets
+23:59:23 [INFO] Created Path: /home/dusk/.local/share/goxlr-utility/icons
+23:59:23 [INFO] Created Path: /home/dusk/.local/share/goxlr-utility/samples/Recorded
+23:59:23 [INFO] Created Path: /home/dusk/.local/share/goxlr-utility/backups
+23:59:23 [INFO] Bound IPC Socket @ Name(UdSocketPath("/tmp/goxlr.socket"))
+23:59:23 [DEBUG] (5) goxlr_daemon::platform::linux::autostart: Found XDG AutoStart Path: "/home/dusk/.config/autostart"
+23:59:23 [DEBUG] (4) goxlr_daemon::servers::ipc_server: Running IPC Server..
+23:59:23 [DEBUG] (5) goxlr_daemon::primary_worker: Performing Firmware Version Check..
+23:59:23 [INFO] Started GoXLR configuration interface at http://localhost:14564/
+23:59:23 [INFO] Starting TTS Service..
+23:59:23 [DEBUG] (5) goxlr_daemon::events: Starting Event Loop..
+23:59:23 [DEBUG] (3) goxlr_daemon::platform::linux::sleep: Spawning Sleep Handler..
+23:59:23 [DEBUG] (3) goxlr_daemon::platform::linux::sleep: Attempting to Inhibit Sleep..
+23:59:23 [DEBUG] (3) goxlr_daemon::platform::linux::sleep: Inhibitor Successfully Established.
+23:59:23 [DEBUG] (3) goxlr_daemon::platform::linux::sleep: Awaiting Result from 'PrepareForSleep'
+23:59:23 [DEBUG] (3) goxlr_daemon::platform::linux::sleep: Preparing Lock Proxy..
+23:59:23 [DEBUG] (3) goxlr_daemon::platform::linux::sleep: Entering Signal Loop..
+23:59:23 [INFO] Connected to possible GoXLR device at Bus 001 Device 005: ID 1220:8fe4
+23:59:23 [DEBUG] (2) goxlr_usb::device::libusb::device: Handling initial request
+23:59:23 [DEBUG] (2) goxlr_daemon::device: New Device Loading..
+23:59:23 [INFO] Configuring GoXLR Mini, Profile: Default - Vaporwave, Mic Profile: DEFAULT
+23:59:23 [DEBUG] (2) goxlr_daemon::profile: Loading Profile From /home/dusk/.local/share/goxlr-utility/profiles/Default - Vaporwave.goxlr
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: Loading Profile Archive..
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: Attempting to read profile.xml..
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: Preparing Structure..
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: MixRoutingTree { mix: {Headphones: A, Broadcast: A, LineOut: A, ChatMic: A, Sampler: A, StreamMix2: A} }
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: SubMixer { submix_enabled: true, volume_table: {Mic: 255, Chat: 189, Music: 76, Game: 128, Console: 128, LineIn: 128, System: 188, Sample: 255}, monitor_tree: MonitorTree { monitored_output: Headphones, headphone_mix: A, routing: {Mic: 8192, Chat: 8192, Music: 8192, Game: 8192, Console: 8192, LineIn: 8192, System: 8192, Sample: 8192} }, linking_tree: LinkingTree { linked_list: {Mic: true, Chat: true, Music: true, Game: true, Console: true, LineIn: true, System: true, Sample: true}, linked_ratio: {Mic: 1.0, Chat: 1.0, Music: 1.0, Game: 1.0, Console: 1.0, LineIn: 1.0, System: 1.0, Sample: 1.0} } }
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Profile Successfully Loaded, Performing Backup..
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: Creating Temporary Save File: "/home/dusk/.local/share/goxlr-utility/backups/Default - Vaporwave.tmp"
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: Save Complete and synced, renaming to "/home/dusk/.local/share/goxlr-utility/backups/Default - Vaporwave.goxlr"
+23:59:23 [DEBUG] (2) goxlr_profile_loader::profile: Renaming "/home/dusk/.local/share/goxlr-utility/backups/Default - Vaporwave.tmp" to "/home/dusk/.local/share/goxlr-utility/backups/Default - Vaporwave.goxlr"
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Main Profile Backup Complete
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Mic Profile Successfully Loaded, Performing Backup..
+23:59:23 [DEBUG] (2) goxlr_profile_loader::mic_profile: Creating Temporary Save File: "/home/dusk/.local/share/goxlr-utility/backups/DEFAULT.tmp"
+23:59:23 [DEBUG] (2) goxlr_profile_loader::mic_profile: Save Complete and synced, renaming to "/home/dusk/.local/share/goxlr-utility/backups/DEFAULT.goxlrMicProfile"
+23:59:23 [DEBUG] (2) goxlr_profile_loader::mic_profile: Renaming "/home/dusk/.local/share/goxlr-utility/backups/DEFAULT.tmp" to "/home/dusk/.local/share/goxlr-utility/backups/DEFAULT.goxlrMicProfile"
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Mic Profile Backup Complete
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Not Spawning Audio Handler, Device is Mini!
+23:59:23 [DEBUG] (2) goxlr_daemon::device: --- DEVICE INFO ---
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Serial: "S210200421DI7"
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Firmware: 1.2.1.49
+23:59:23 [DEBUG] (2) goxlr_daemon::device: DICE: 1.2.1.49
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Type: Mini
+23:59:23 [DEBUG] (2) goxlr_daemon::device: -------------------
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Applying Profile..
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Faders..
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Fader A to Mic
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Fader B to Chat
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Fader C to Music
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Fader D to System
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Mute States..
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Applying Microphone Mute State
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Mic to Muted
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Unknown Channel state for LineIn, Unmuting.
+23:59:23 [DEBUG] (3) goxlr_daemon::primary_worker: Firmware Update Process Finished
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Unknown Channel state for Console, Unmuting.
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Channel System on Fader, Loading State from Profile
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Channel System set to Unmuted (no previous)
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Unknown Channel state for Game, Unmuting.
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Channel Chat on Fader, Loading State from Profile
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Channel Chat set to Unmuted (no previous)
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Unknown Channel state for Sample, Unmuting.
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Channel Music on Fader, Loading State from Profile
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Channel Music set to Unmuted (no previous)
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Unknown Channel state for Headphones, Unmuting.
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Unknown Channel state for MicMonitor, Unmuting.
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Unknown Channel state for LineOut, Unmuting.
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting Channel Volumes..
+23:59:23 [DEBUG] (2) goxlr_daemon::device: No reference volumes, sending channels in order
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting volume for Mic to 255
+23:59:23 [DEBUG] (2) goxlr_usb::device::libusb::device: Response not arrived yet for SetChannelVolume(Mic), sleeping and retrying (Attempt 1 of 20)
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting volume for LineIn to 128
+23:59:23 [DEBUG] (2) goxlr_daemon::device: Setting volume for Console to 128
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for System to 188
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for Game to 128
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for Chat to 189
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for Sample to 255
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for Music to 76
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for Headphones to 255
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for MicMonitor to 255
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting volume for LineOut to 255
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Submixing Settings..
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for Mic to 255
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for LineIn to 128
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for Console to 128
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for System to 188
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for Game to 128
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for Chat to 189
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for Sample to 255
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Sub Mix volume for Music to 76
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Loading Colour Map..
+23:59:24 [DEBUG] (2) goxlr_usb::device::libusb::device: Response not arrived yet for SetColourMap, sleeping and retrying (Attempt 1 of 20)
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Fader display modes..
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting display for A
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting display for B
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting display for C
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting display for D
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Updating button states..
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing..
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to Microphone:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to Chat:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to Music:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Light HardTune Enabled for Channel: Music
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to Game:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Light HardTune Enabled for Channel: Game
+23:59:24 [DEBUG] (2) goxlr_usb::device::libusb::device: Response not arrived yet for SetRouting(GameRight), sleeping and retrying (Attempt 1 of 20)
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to Console:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to LineIn:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Light HardTune Enabled for Channel: LineIn
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to System:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Light HardTune Enabled for Channel: System
+23:59:24 [DEBUG] (2) goxlr_daemon::device: IsStreamNoMusic: false
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Routing to Samples:
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Applying Voice FX
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Validating Sampler Configuration..
+23:59:24 [DEBUG] (2) goxlr_usb::device::libusb::device: Response not arrived yet for SetColourMap, sleeping and retrying (Attempt 1 of 20)
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting CompressorMakeUpGain to 4
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer63HzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting DeEsser to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer500HzFrequency to 111
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer16KHzFrequency to 231
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting CompressorAttack to 1
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer2KHzFrequency to 159
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer125HzFrequency to 63
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer63HzFrequency to 40
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer250HzFrequency to 87
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer8KHzFrequency to 207
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting CompressorRatio to 9
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting MicInputMute to 1
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer1KHzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer16KHzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting GateThreshold to -48
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer125HzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer2KHzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer4KHzFrequency to 183
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting CompressorThreshold to -11
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer250HzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer500HzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting CompressorRelease to 9
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting GateAttenuation to -61
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting GateRelease to 22
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer4KHzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer8KHzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting GateMode to 2
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer31HzFrequency to 16
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting GateEnabled to 1
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer31HzGain to 0
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting BleepLevel to -30
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting Equalizer1KHzFrequency to 135
+23:59:24 [DEBUG] (2) goxlr_daemon::device: Setting GateAttack to 13
+23:59:24 [DEBUG] (2) goxlr_daemon::settings: Saving Settings
+23:59:24 [DEBUG] (2) goxlr_daemon::settings: Creating Temporary Save File: "/home/dusk/.config/goxlr-utility/settings.tmp"
+23:59:24 [DEBUG] (2) goxlr_daemon::settings: Save Complete and synced, renaming to "/home/dusk/.config/goxlr-utility/settings.json"
+23:59:24 [DEBUG] (2) goxlr_daemon::settings: Target exists, removing..
+23:59:24 [DEBUG] (2) goxlr_daemon::settings: Renaming "/home/dusk/.config/goxlr-utility/settings.tmp" to "/home/dusk/.config/goxlr-utility/settings.json"
+23:59:24 [DEBUG] (2) goxlr_daemon::settings: Settings Saved.
+23:59:29 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:35 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:38 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:39 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:44 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:44 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:50 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:50 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+23:59:52 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:00 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:02 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:04 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:13 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:18 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:21 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:22 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:27 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:27 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:28 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:28 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:31 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:32 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:33 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:34 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:34 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:38 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:42 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:42 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:44 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:45 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:51 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:51 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:51 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:55 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:55 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:55 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:00:57 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:00 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:06 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:08 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:12 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:12 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:14 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:17 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:18 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:20 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:27 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:39 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:39 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:39 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:40 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:41 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:41 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:54 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:01:57 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:02 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:02 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:02 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:03 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:06 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:16 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:16 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:16 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:19 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:21 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:21 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:22 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:26 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:26 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:27 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:28 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:30 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:32 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:34 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:37 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:38 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:40 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:45 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:46 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:46 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:02:57 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:00 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:02 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:03 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:06 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:07 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:08 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:10 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:11 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:14 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:17 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:19 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:23 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:26 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:27 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:27 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:27 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:28 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:28 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:30 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:30 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:33 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:35 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:36 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:36 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:38 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:40 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:41 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:51 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:52 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:55 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:58 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:03:59 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:00 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:02 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:10 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:14 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:14 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:18 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:18 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:20 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:22 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:23 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:24 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:30 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:32 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:34 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:42 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:42 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:45 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:45 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:47 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:51 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:53 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:54 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:56 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:04:56 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:00 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:06 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:06 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:06 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:07 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:09 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:09 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:11 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:11 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:15 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:19 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:20 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:22 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:24 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:27 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:30 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:31 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:42 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:46 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:46 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:53 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:54 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:05:59 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:03 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:03 [DEBUG] (6) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:08 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:14 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:14 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:19 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:21 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:26 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:26 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:30 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:34 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:36 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:06:46 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:04 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:05 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:06 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:09 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:19 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:20 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:20 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:22 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:22 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:25 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:27 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:29 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:31 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:33 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:39 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:42 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:43 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:44 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:45 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:46 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:47 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:48 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:50 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:55 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:56 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:57 [DEBUG] (5) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:58 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:07:59 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:08:03 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:08:11 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:08:14 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
+00:08:15 [DEBUG] (3) goxlr_usb::device::libusb::device: Response not arrived yet for GetButtonStates, sleeping and retrying (Attempt 1 of 20)
