@@ -178,15 +178,24 @@ vim.keymap.set('n', '<leader>ehx', function()
 end, { desc = 'Help Tag (new tab)' })
 
 -- Browser Search
-vim.keymap.set('n', '<leader>ws', function()
+vim.keymap.set('n', '<leader>es', function()
     vim.ui.input({ prompt = 'Search: ' }, function(query)
         if query and #query > 0 then
             local encoded = vim.fn.substitute(query, ' ', '+', 'g')
-            -- Open w3m in a new tmux split
             vim.fn.system('tmux split-window -h "w3m https://html.duckduckgo.com/html/?q=' .. encoded .. '"')
         end
     end)
 end, { desc = 'Search web in tmux split' })
+
+-- External Browser Search
+vim.keymap.set('n', '<leader>ex', function()
+    vim.ui.input({ prompt = 'Search: ' }, function(query)
+        if query and #query > 0 then
+            local encoded = vim.fn.substitute(query, ' ', '+', 'g')
+            vim.fn.system('tmux split-window -h "ddgr ' .. query .. '"')
+        end
+    end)
+end, { desc = 'Search web externally' })
 
 -- Clear search highlight
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
