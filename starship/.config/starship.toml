@@ -1,7 +1,6 @@
 format = """
-[╭── $directory](purple)\
-$git_branch\
-$git_status\
+[╭── $directory](blue)\
+[$git_branch $git_status](blue)\
 $fill\
 $c\
 $python\
@@ -13,7 +12,7 @@ $container\
 $jobs\
 $cmd_duration\
 $line_break\
-[╰──$character](purple)\
+[╰──$character](blue)\
 """
 
 [fill]
@@ -35,3 +34,6 @@ truncate_to_repo = false
 
 [character]
 format = ">"
+
+# [git_branch]
+# style = "bold blue"
