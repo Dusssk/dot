@@ -1,0 +1,37 @@
+format = """
+[╭── $directory](purple)\
+$git_branch\
+$git_status\
+$fill\
+$c\
+$python\
+$lua\
+$cmake\
+$make\
+$docker_context\
+$container\
+$jobs\
+$cmd_duration\
+$line_break\
+[╰──$character](purple)\
+"""
+
+[fill]
+symbol = " "
+
+[directory.substitutions]
+'Documents' = '󰈙'
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
+'Home' = 'U+1F3E0'
+
+[directory]
+style = "bold fg:dark blue"
+format = "[$path ]($style)"
+truncation_length = 3
+truncation_symbol = ".../"
+truncate_to_repo = false
+
+[character]
+format = ">"

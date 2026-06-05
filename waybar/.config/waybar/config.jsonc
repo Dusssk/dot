@@ -20,8 +20,8 @@
   ],
   "modules-left": [
     // "group/distro-group",
-    "group/storage",
-    "group/connections"
+    "group/connections",
+    "group/storage"
     // "group/system"
   ],
   "modules-center": [

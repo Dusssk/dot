@@ -4,7 +4,7 @@
     "interval": 3600,
     "path": "/",
     // "format": "󱙋",
-    "format": "󱙋 <span size='11pt'>{used}</span>",
+    "format": "󱙋 <span size='11pt'>{used}/{total}</span>",
     "states": {
       "warning": 80,
       "critical": 90
@@ -14,7 +14,7 @@
     "tooltip": false,
     "interval": 15,
     // "format": "󰍛",
-    "format": "󰍛 <span size='11pt'>{used}</span>",
+    "format": "󰍛 <span size='11pt'>{used}GiB</span>",
     "states": {
       "warning": 75,
       "critical": 85
