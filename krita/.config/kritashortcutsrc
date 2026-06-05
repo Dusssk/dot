@@ -1,0 +1,7 @@
+[Shortcuts]
+KisToolSelectOutline=Ctrl+Shift+A
+KritaFill/KisToolFill=G;\s
+KritaFill/KisToolGradient=;\s
+KritaShape/KisToolBrush=F
+deselect=Ctrl+D;\s
+pathsegment-line=;\s
