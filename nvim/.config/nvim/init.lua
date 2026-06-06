@@ -5,6 +5,8 @@ require("config.keybinds")
 require("config.autocmds")
 require("config.options")
 require("config.plugins")
+require("config.colors")
+require("config.matugen")
 require("config.lsp")
 
 -- Man pages
@@ -13,16 +15,16 @@ vim.g.man_hardwrap = false
 vim.opt.helpheight = 9999
 
 -- Theme
-vim.cmd.colorscheme('catppuccin')
+-- vim.cmd.colorscheme('catppuccin')
 
-local normal_bg = '#181825'
-vim.api.nvim_set_hl(0, 'Normal', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'LspHover', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'NormalNC', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = normal_bg })
+-- local normal_bg = '#181825'
+-- vim.api.nvim_set_hl(0, 'Normal', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'LspHover', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'NormalNC', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'StatusLine', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = normal_bg })
 
 -- Force true color inside tmux
 if vim.env.TMUX then
@@ -47,12 +49,8 @@ vim.opt.winborder = 'rounded'
 -- vim.api.nvim_set_hl(0, 'DiagnosticDeprecated', { bg = 'none' })
 --
 -- Completion menu
-vim.api.nvim_set_hl(0, 'Pmenu', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'PmenuSel', { bg = "#45475a" })  -- Keep selection visible
-vim.api.nvim_set_hl(0, 'PmenuSbar', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'PmenuThumb', { bg = normal_bg })
---
--- -- StatusLine
--- vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'Pmenu', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'PmenuSel', { bg = "#45475a" })  -- Keep selection visible
+-- vim.api.nvim_set_hl(0, 'PmenuSbar', { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, 'PmenuThumb', { bg = normal_bg })
 

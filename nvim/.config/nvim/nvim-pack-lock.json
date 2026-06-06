@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "base16-nvim": {
+      "rev": "23e5128eb5f629c29532c24a1e733cbe019f05bb",
+      "src": "https://github.com/RRethy/base16-nvim"
+    },
     "neovim": {
       "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
       "src": "https://github.com/rose-pine/neovim"

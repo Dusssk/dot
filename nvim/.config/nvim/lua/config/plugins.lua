@@ -3,7 +3,7 @@ vim.pack.add({
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/stevearc/oil.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
-    "https://github.com/catppuccin/nvim",
+    "https://github.com/RRethy/base16-nvim",
 })
 
 require("nvim-autopairs").setup()

@@ -1,6 +1,6 @@
 format = """
-[╭── $directory](blue)\
-[$git_branch $git_status](blue)\
+[╭── $directory](color8)\
+[$git_branch](color9)$git_status\
 $fill\
 $c\
 $python\
@@ -12,8 +12,21 @@ $container\
 $jobs\
 $cmd_duration\
 $line_break\
-[╰──$character](blue)\
+[╰──$character](color8)\
 """
+
+palette = "colors"
+
+[palettes.colors]
+color1 = '#b8c4ff'
+color2 = '#1f2d61'
+color3 = '#c6c5d0'
+color4 = '#1f1f25'
+color5 = '#1f2d61'
+color6 = '#121318'
+color7 = '#121318'
+color8 = '#b8c4ff'
+color9 = '#e4bad9'
 
 [fill]
 symbol = " "
@@ -23,17 +36,29 @@ symbol = " "
 'Downloads' = ' '
 'Music' = ' '
 'Pictures' = ' '
-'Home' = 'U+1F3E0'
 
 [directory]
-style = "bold fg:dark blue"
+style = "color1"
 format = "[$path ]($style)"
 truncation_length = 3
 truncation_symbol = ".../"
 truncate_to_repo = false
 
 [character]
-format = ">"
+format = "$symbol "
+success_symbol = "[❯](color8)"
+error_symbol = "[✗](color2)"
 
-# [git_branch]
-# style = "bold blue"
+[git_branch]
+style = "color9"
+
+
+[git_status]
+style = "color9"
+
+
+
+# [profiles.transient]
+# format = "$character"
+# right_format = "$status $cmd_duration"
+
