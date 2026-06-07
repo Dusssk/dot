@@ -1,4 +1,4 @@
-@import "colors.rasi"
+@import "shared/colors.rasi"
 
 * {
      background-color: @primary-container;

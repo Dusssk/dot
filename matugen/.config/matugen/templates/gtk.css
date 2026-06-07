@@ -2,7 +2,7 @@
 
 * {
   * font-weight: 500;
-  * font-family: "FiraCode Nerd Font"
+  * font-family: "FiraCode Nerd Font";
 }
 
 @define-color accent_color {{colors.primary_fixed_dim.default.hex}};
@@ -25,7 +25,7 @@
 
 .navigation-sidebar {
   background-color: @sidebar_bg_color;
-  color: @window_fg_color
+  color: @window_fg_color;
 }
 
 headerbar.default-decoration {

@@ -26,6 +26,7 @@ output_path = "~/.config/tmux/tmux-colors.conf"
 [templates.nvim]
 input_path = "~/.config/matugen/templates/nvim-colors.lua"
 output_path = "~/.config/nvim/lua/config/colors.lua"
+post_hook = "killall -SIGUSR1 nvim 2>/dev/null || true"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk.css'
