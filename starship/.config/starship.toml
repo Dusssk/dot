@@ -18,15 +18,15 @@ $line_break\
 palette = "colors"
 
 [palettes.colors]
-color1 = '#b8c4ff'
-color2 = '#1f2d61'
-color3 = '#c6c5d0'
-color4 = '#1f1f25'
-color5 = '#1f2d61'
-color6 = '#121318'
-color7 = '#121318'
-color8 = '#b8c4ff'
-color9 = '#e4bad9'
+color1 = '#93cdf6'
+color2 = '#00344c'
+color3 = '#c1c7ce'
+color4 = '#1c2024'
+color5 = '#00344c'
+color6 = '#101417'
+color7 = '#101417'
+color8 = '#93cdf6'
+color9 = '#cdc0e9'
 
 [fill]
 symbol = " "

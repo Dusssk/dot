@@ -2,9 +2,9 @@
 
 # --- Configuration ---
 # Updated to your requested directory
-WALLDIR="$HOME/.config/wallpapers"
+WALLDIR="$HOME/.config/wall/"
 # Using your specific theme path
-ROFI_THEME="$HOME/.config/rofi/styles/wall-picker.rasi"
+ROFI_THEME="$HOME/.config/rofi/styles/wallchange.rasi"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-thumbs"
 HYPRLOCK_CACHE="$HOME/.cache/hyprlock/wallpaper.png"
 THUMB_SIZE="400x400"

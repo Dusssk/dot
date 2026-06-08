@@ -134,6 +134,9 @@ vim.keymap.set('n', '<leader>ehm', function()
     vim.ui.input({ prompt = 'Man: ' }, function(input)
         if input and #input > 0 then
             vim.cmd('Man ' .. input)
+            vim.defer_fn(function()
+                vim.cmd('only')
+            end, 100)
         end
     end)
 end, { desc = 'Input Man Page' })
@@ -143,6 +146,7 @@ vim.keymap.set('n', '<leader>eht', function()
     vim.ui.input({ prompt = 'Man (tab): ' }, function(input)
         if input and #input > 0 then
             vim.cmd('tab Man ' .. input)
+            vim.cmd('only')
         end
     end)
 end, { desc = 'Man Page (new tab)' })
