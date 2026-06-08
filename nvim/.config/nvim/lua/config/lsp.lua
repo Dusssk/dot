@@ -28,6 +28,15 @@ vim.lsp.config("clangd", {
     root_markers = { ".clangd", "compile_commands.json" }
 })
 vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'sh', 'bash' },
+    callback = function()
+        vim.lsp.start({
+            name = 'bashls',
+            cmd = { 'bash-language-server', 'start' },
+        })
+    end,
+})
+vim.api.nvim_create_autocmd('FileType', {
     pattern = 'python',
     callback = function()
         -- Start pyright
@@ -39,6 +48,15 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.lsp.start({
             name = 'ruff',
             cmd = { 'ruff', 'server' },
+        })
+    end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'lua',
+    callback = function()
+        vim.lsp.start({
+            name = 'lua_ls',
+            cmd = { 'lua-language-server' },
         })
     end,
 })
@@ -107,4 +125,5 @@ vim.lsp.enable("clangd")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("bashls")
 
