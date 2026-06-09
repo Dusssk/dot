@@ -20,7 +20,8 @@
   ],
   "modules-left": [
     // "group/distro-group",
-    "group/connections",
+    // "group/connections",
+    "group/audio",
     "group/storage"
     // "group/system"
   ],
@@ -30,7 +31,6 @@
     // "idle_inhibitor"
   ],
   "modules-right": [
-    "group/audio",
     // "battery",
     "clock",
     "group/tray-group"
