@@ -10,10 +10,6 @@ input_path = "~/.config/matugen/templates/colors.css"
 output_path = "~/.config/waybar/tokens/colors.css"
 post_hook = "pkill -SIGUSR2 waybar"
 
-[templates.fuzzel]
-input_path = "~/.config/matugen/templates/fuzzel.ini"
-output_path = "~/.config/fuzzel/colors.ini"
-
 [templates.kitty]
 input_path = "~/.config/matugen/templates/kitty-colors.conf"
 output_path = "~/.config/kitty/themes/kitty-colors.conf"

@@ -106,16 +106,7 @@
         {
           "label": "󰋩",
           "command": "swaync-client -t -sw; ~/.config/rofi/launchers/wallchange.sh"
-        },
-        {
-          "label": "",
-          "command": "reboot"
-        },
-        {
-          "label": "",
-          "command": "shutdown now"
         }
-
       ]
     }
   }
