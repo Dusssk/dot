@@ -1,20 +1,18 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # --- Configuration ---
 # Updated to your requested directory
-WALLDIR="$HOME/.config/wall/"
+WALLDIR="$HOME/.config/wall"
 # Using your specific theme path
 ROFI_THEME="$HOME/.config/rofi/styles/wallchange.rasi"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-thumbs"
-HYPRLOCK_CACHE="$HOME/.cache/hyprlock/wallpaper.png"
 THUMB_SIZE="400x400"
 
 # Ensure directories exist
 mkdir -p "$CACHE_DIR"
-mkdir -p "$(dirname "$HYPRLOCK_CACHE")"
 
 # --- 1. Find Images ---
-mapfile -t IMG_FILES < <(find "$WALLDIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp" \))
+mapfile -t IMG_FILES < <(find "$WALLDIR" -type f -o -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp")
 
 if [ "${#IMG_FILES[@]}" -eq 0 ]; then
     notify-send "Error" "No images found in $WALLDIR"
@@ -56,12 +54,11 @@ SELECTED_NAME=$(basename "$WALLPAPER_PATH")
 # --- 4. Apply (The combined logic you asked for) ---
 
 # First: Apply to hyprpaper (if running)
-hyprctl hyprpaper preload "$WALLPAPER_PATH" > /dev/null 2>&1
-hyprctl hyprpaper wallpaper "eDP-1,$WALLPAPER_PATH" > /dev/null 2>&1
+# hyprctl hyprpaper preload "$WALLPAPER_PATH" > /dev/null 2>&1
+# hyprctl hyprpaper wallpaper ",$WALLPAPER_PATH"
 
 # Second: The part from your second code (matugen + hyprlock cache + notify)
-cp "$WALLPAPER_PATH" "$HYPRLOCK_CACHE" && \
-matugen image "$WALLPAPER_PATH" && \
-notify-send "Wallpaper Changed" "${SELECTED_NAME} applied."
+matugen image $WALLPAPER_PATH --prefer darkness
+notify-send "Wallpaper Changed" "${WALLPAPER_PATH} applied."
 
 exit 0

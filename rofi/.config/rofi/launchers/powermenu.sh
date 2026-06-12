@@ -4,7 +4,7 @@
 ## Github : @adi1090x
 
 # Current Theme
-dir="$HOME/.config/rofi"
+dir="$HOME/.config/rofi/styles"
 theme='powermenu'
 
 # CMDs
@@ -12,13 +12,13 @@ uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # Options
-shutdown='󰐥'   # nf-fa-power_off
-reboot='󰜉'     # nf-fa-repeat
-lock='󰌾'       # nf-fa-lock
-suspend='󰤄'    # nf-fa-moon_o (or suspend icon)
-logout='󰍃'     # nf-fa-sign_out
-yes='󰄬'       # nf-fa-check
-no='󰅖'        # nf-fa-close
+shutdown='󰐥'
+reboot='󰜉'
+lock='󰌾'
+suspend='󰤄'
+logout='󰍃'
+yes='󰄬'
+no='󰅖'
 
 # Rofi CMD
 rofi_cmd() {
@@ -73,6 +73,7 @@ run_cmd() {
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi
+      hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit
 		fi
 	else
 		exit 0
