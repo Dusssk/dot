@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 # Updated to your requested directory
-WALLDIR="$HOME/.config/wall"
+WALLDIR="/mnt/sda2/wall"
 # Using your specific theme path
 ROFI_THEME="$HOME/.config/rofi/styles/wallchange.rasi"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-thumbs"
@@ -56,6 +56,7 @@ SELECTED_NAME=$(basename "$WALLPAPER_PATH")
 # First: Apply to hyprpaper (if running)
 # hyprctl hyprpaper preload "$WALLPAPER_PATH" > /dev/null 2>&1
 # hyprctl hyprpaper wallpaper ",$WALLPAPER_PATH"
+notify-send = $SELECTED_NAME
 
 # Second: The part from your second code (matugen + hyprlock cache + notify)
 matugen image $WALLPAPER_PATH --prefer darkness

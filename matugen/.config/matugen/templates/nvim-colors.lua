@@ -46,9 +46,13 @@ vim.api.nvim_set_hl(0, 'LspHover', { bg = normal_bg })
 vim.api.nvim_set_hl(0, 'NormalNC', { bg = normal_bg })
 vim.api.nvim_set_hl(0, 'StatusLine', { bg = normal_bg })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = normal_bg })
+vim.api.nvim_set_hl(0, 'LineNr', { bg = normal_bg })
+vim.api.nvim_set_hl(0, 'LineNrAbove', { bg = normal_bg })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { bg = normal_bg })
+vim.api.nvim_set_hl(0, 'SignColumn', { bg = normal_bg })
 
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = normal_bg })
-vim.api.nvim_set_hl(0, 'PmenuSel', { bg = "{{colors.inverse_on_surface.default.hex}}" })  -- Keep selection visible
+vim.api.nvim_set_hl(0, 'PmenuSel', { bg = "#2b3132" }) -- Keep selection visible
 vim.api.nvim_set_hl(0, 'PmenuSbar', { bg = normal_bg })
 vim.api.nvim_set_hl(0, 'PmenuThumb', { bg = normal_bg })
 
