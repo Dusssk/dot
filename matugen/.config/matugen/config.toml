@@ -3,8 +3,8 @@ set = true
 command = "hyprctl hyprpaper wallpaper ',{{image}}' &"
 
 [templates.hyprland]
-input_path = "/home/dusk/.config/matugen/templates/hyprland-colors.conf"
-output_path = "~/.config/hypr/colors.conf"
+input_path = "/home/dusk/.config/matugen/templates/hyprland-colors.lua"
+output_path = "~/.config/hypr/modules/colors.lua"
 post_hook = "hyprctl reload"
 
 [templates.waybar]
