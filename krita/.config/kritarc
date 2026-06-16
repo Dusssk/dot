@@ -46,7 +46,7 @@ Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
 LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB b="0" g="0" r="0" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastBackGroundColor>\n
-LastColorHistory=<!DOCTYPE LastColorHistory>\n<colors>\n <RGB b="1" g="1" r="1" space="sRGB-elle-V2-srgbtrc.icc"/>\n <RGB b="0" g="0" r="0" space="sRGB-elle-V2-srgbtrc.icc"/>\n</colors>\n
+LastColorHistory=<!DOCTYPE LastColorHistory>\n<colors>\n <RGB b="1" g="1" r="1" space="sRGB-elle-V2-srgbtrc.icc"/>\n <RGB b="1" g="1" r="1" space="sRGB-elle-V2-srgbtrc.icc"/>\n <RGB b="0" g="0" r="0" space="sRGB-elle-V2-srgbtrc.icc"/>\n</colors>\n
 LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB b="1" g="1" r="1" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastForeGroundColor>\n
 LastPreset_-1=rectangle
 LineSmoothingDelayDistance=50
@@ -601,12 +601,14 @@ File3[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/10-06-2026.kra
 File4[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/11-06-2026.kra
 File5[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/12-06-2026.kra
 File6[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/13-06-2026.kra
+File7[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/15-06-2026.kra
 Name1=08-06-2026.kra
 Name2=09-06-2026.kra
 Name3=10-06-2026.kra
 Name4=11-06-2026.kra
 Name5=12-06-2026.kra
 Name6=13-06-2026.kra
+Name7=15-06-2026.kra
 maxRecentFileItems=100
 
 [SelectedTags]

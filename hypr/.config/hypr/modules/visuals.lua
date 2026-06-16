@@ -1,5 +1,7 @@
 # ~/.config/hypr/modules/visual.lua
 
+require("colors")
+
 hl.config({
   general = {
     gaps_in = 2,
@@ -17,6 +19,6 @@ hl.config({
 
   -- Decoration
   decoration = {
-    rounding = 8
+    rounding = 4
   },
 })

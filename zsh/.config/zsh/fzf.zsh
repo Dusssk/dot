@@ -21,7 +21,7 @@ export FZF_DEFAULT_OPTS='
   --pointer="  "
   --preview-window=right:65%:wrap:border-left
 '
-export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
+export _FZF_PREVIEW_CMD='cat --color=always --style=plain,numbers --line-range=:500 {}'
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
 
 # Ctrl+F file pciker excludes hidden files
