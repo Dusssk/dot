@@ -136,8 +136,7 @@ vim.keymap.set('n', '<leader>ehm', function()
     if input and #input > 0 then
       vim.cmd('Man ' .. input)
       vim.defer_fn(function()
-        vim.cmd('winc k')
-        vim.cmd('q')
+        vim.cmd('-quit')
       end, 10)
     end
   end)
@@ -148,7 +147,6 @@ vim.keymap.set('n', '<leader>eht', function()
   vim.ui.input({ prompt = 'Man (tab): ' }, function(input)
     if input and #input > 0 then
       vim.cmd('tab Man ' .. input)
-      vim.cmd('only')
     end
   end)
 end, { desc = 'Man Page (new tab)' })
@@ -162,8 +160,7 @@ vim.keymap.set('n', '<leader>ehh', function()
     if input and #input > 0 then
       vim.cmd('vertical help ' .. input)
       vim.defer_fn(function()
-        vim.cmd('winc h')
-        vim.cmd('q')
+        vim.cmd('-quit')
       end, 10)
     end
   end)
@@ -187,17 +184,7 @@ vim.keymap.set('n', '<leader>ehx', function()
   end)
 end, { desc = 'Help Tag (new tab)' })
 
--- Browser Search
-vim.keymap.set('n', '<leader>es', function()
-  vim.ui.input({ prompt = 'Search: ' }, function(query)
-    if query and #query > 0 then
-      local encoded = vim.fn.substitute(query, ' ', '+', 'g')
-      vim.fn.system('tmux split-window -h "w3m https://html.duckduckgo.com/html/?q=' .. encoded .. '"')
-    end
-  end)
-end, { desc = 'Search web in tmux split' })
-
--- External Browser Search
+-- Tmux Browser Search
 vim.keymap.set('n', '<leader>ex', function()
   vim.ui.input({ prompt = 'Search: ' }, function(query)
     if query and #query > 0 then
@@ -205,7 +192,17 @@ vim.keymap.set('n', '<leader>ex', function()
       vim.fn.system('tmux split-window -h "ddgr ' .. query .. '"')
     end
   end)
-end, { desc = 'Search web externally' })
+end, { desc = 'Search web in tmux pane' })
+
+-- Nvim Browser Search
+vim.keymap.set('n', '<leader>es', function()
+  vim.ui.input({ prompt = 'Search: ' }, function(query)
+    if query and #query > 0 then
+      local encoded = vim.fn.substitute(query, ' ', '+', 'g')
+      vim.cmd('vertical terminal ddgr ' .. query)
+    end
+  end)
+end, { desc = 'Search web in nvim' })
 
 -- Clear search highlight
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
