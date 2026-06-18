@@ -102,7 +102,7 @@ require("oil").setup({
             vim.fn.jobstart({ "zathura", path }, { detach = true })
           elseif is_video or is_audio then
             -- Simple MPV command for both video and audio
-            vim.fn.jobstart({ "mpv", path }, { detach = true })
+            vim.fn.jobstart({ "mpv", "--save-watch-history", path }, { detach = true })
           elseif is_image then
             -- Open a new Kitty window with kitten icat
             vim.fn.jobstart({

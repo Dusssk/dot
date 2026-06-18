@@ -204,16 +204,6 @@ vim.keymap.set('n', '<leader>es', function()
   end)
 end, { desc = 'Search web in nvim' })
 
--- Tmux Browser Search
-vim.keymap.set('n', '<leader>ex', function()
-  vim.fn.system('tmux split-window -h youtube-tui')
-end, { desc = 'YouTube in tmux pane' })
-
--- Nvim Browser Search
-vim.keymap.set('n', '<leader>es', function()
-  vim.cmd('vertical terminal youtube-tui')
-end, { desc = 'YouTube in nvim' })
-
 -- Clear search highlight
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 
