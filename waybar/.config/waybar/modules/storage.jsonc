@@ -1,7 +1,7 @@
 {
   "disk": {
     "tooltip": false,
-    "interval": 3600,
+    "interval": 60,
     "path": "/",
     // "format": "󱙋",
     "format": "󱙋 <span size='11pt'>{used}/{total}</span>",

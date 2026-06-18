@@ -125,7 +125,8 @@ vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true 
 vim.keymap.set('n', '<leader>ehv', function()
   vim.ui.input({ prompt = 'Man (vertical): ' }, function(input)
     if input and #input > 0 then
-      vim.cmd('vertical Man ' .. input)
+      vim.cmd('vert Man ' .. input)
+      vim.cmd('wincmd h')
     end
   end)
 end, { desc = 'Man Page (vertical split)' })
@@ -134,10 +135,11 @@ end, { desc = 'Man Page (vertical split)' })
 vim.keymap.set('n', '<leader>ehm', function()
   vim.ui.input({ prompt = 'Man: ' }, function(input)
     if input and #input > 0 then
-      vim.cmd('Man ' .. input)
+      vim.cmd('vert Man ' .. input)
+      vim.cmd('wincmd h')
       vim.defer_fn(function()
-        vim.cmd('-quit')
-      end, 10)
+        -- vim.cmd('quit')
+      end, 30)
     end
   end)
 end, { desc = 'Input Man Page' })
