@@ -12,6 +12,13 @@ else
   hyprpaper &
 fi
 
+dependencies=("waybar" "hyprpaper" "matugen" "imagemagick")
+
+for dependency in ${dependencies[@]}; do
+  if ! pacman -Q $dependency > /dev/null 2>&1; then
+    sudo pacman -S --noconfirm "$dependency"
+  fi
+done
 
 wallpaper="/mnt/sda2/wall/girl_umbrella_road_water_mountain_fence_house.png"
 base_cmd="matugen --prefer darkness image $wallpaper"
