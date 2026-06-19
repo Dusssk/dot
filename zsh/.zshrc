@@ -20,6 +20,9 @@ setopt NUMERIC_GLOB_SORT
 # Load completion system
 autoload -Uz compinit && compinit   # Enable smart completion
 
+alias ls="ls --color"
+alias cat="bat"
+
 # Completion with cached metadata file
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
