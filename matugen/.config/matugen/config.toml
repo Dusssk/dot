@@ -51,7 +51,10 @@ output_path = '~/.config/swaync/gtk.css'
 pre_hook = "pkill swaync"
 post_hook = "swaync &"
 
+[templates.wall]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/scripts/dependencies/wall/colors.rasi'
+
 [templates.zathura]
 input_path = '~/.config/matugen/templates/zathurarc'
 output_path = '~/.config/zathura/zathurarc'
-
