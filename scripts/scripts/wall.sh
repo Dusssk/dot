@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # waybar starts using the matugen cmd
-if pgrep waybar; then
+if pgrep waybar > /dev/null; then
   pkill waybar
 fi
 
-if pgrep hyprpaper; then
+if pgrep hyprpaper > /dev/null; then
   pkill hyprpaper
   hyprpaper &
 else
@@ -30,7 +30,6 @@ for dependency in ${dependencies[@]}; do
     sudo pacman -S --noconfirm "$dependency"
   fi
 done
-echo $file
 
 if [[ ! -d $cache_dir ]] || [[ ! -f $file ]]; then
   mkdir -p $cache_dir

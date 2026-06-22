@@ -1,7 +1,11 @@
 #!/bin/bash
 
 if sudo rm -rf ~/.cache/debuginfod_client/; then
-  echo "Cleaned the debuginfod directory"
+  echo "Cleaned the debuginfod cache"
+fi
+
+if sudo rm -rf ~/.cache/mozilla/; then
+  echo "Cleaned the mozilla cache"
 fi
 
 if sudo pacman -Rns $(pacman -Qdtq); then

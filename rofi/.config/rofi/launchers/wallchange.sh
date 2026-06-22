@@ -27,7 +27,7 @@ for IMG_FILE in "${IMG_FILES[@]}"; do
     # Create thumbnail if it doesn't exist
     THUMB_FILE="$CACHE_DIR/${BASENAME}.png"
     if [ ! -f "$THUMB_FILE" ]; then
-        convert "$IMG_FILE" -auto-orient -thumbnail "${THUMB_SIZE}^" -gravity center -extent "$THUMB_SIZE" "$THUMB_FILE"
+        magick "$IMG_FILE" -auto-orient -thumbnail "${THUMB_SIZE}^" -gravity center -extent "$THUMB_SIZE" "$THUMB_FILE"
     fi
 
     # Build the string for Rofi
