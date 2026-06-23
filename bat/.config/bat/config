@@ -1,0 +1,22 @@
+# ~/.config/bat/config
+
+--map-syntax "*.ino:C++"
+--map-syntax ".ignore:Git Ignore"
+
+--language "py"
+--language "c"
+--language "h"
+--language "sh"
+--language "bash"
+
+--wrap="auto"
+--tabs="2"
+
+--color="auto"
+
+--style="numbers,changes,header"
+--decorations="auto"
+--italic-text="always"
+
+--theme-dark="Catppuccin Mocha"
+--theme-light="Catppuccin Mocha"
