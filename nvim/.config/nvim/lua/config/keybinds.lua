@@ -83,6 +83,19 @@ vim.keymap.set('n', '<leader>ot', function()
   vim.cmd('terminal')
 end, { desc = 'Terminal in directory' })
 
+-- Open terminal in current Oil directory
+vim.keymap.set('n', '<leader>ox', function()
+  local dir = require('oil').get_current_dir()
+  local escaped_dir = vim.fn.shellescape(dir)
+  local dir_name = vim.fn.fnamemodify(dir, ':t')
+
+  -- Remove any problematic characters from the window name
+  -- Replace spaces with underscores, remove special chars
+  local clean_name = dir_name:gsub("[^%w%-%._]", "_")
+
+  vim.cmd('silent !tmux new-window -c ' .. escaped_dir .. ' -n "' .. clean_name .. '" &')
+end, { desc = 'Open tmux in current directory' })
+
 -- Copy file path to clipboard
 vim.keymap.set('n', '<leader>oy', function()
   local entry = require('oil').get_cursor_entry()

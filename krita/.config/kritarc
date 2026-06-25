@@ -303,6 +303,11 @@ splitterState_1row=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\xff\xff\xff\
 [KisShortcutsDialog Settings]
 Dialog Size=649,653
 
+[KisToolCrop]
+allowGrow=true
+decoration=1
+growCenter=false
+
 [KisToolTransform]
 forceLodMode=true
 useOverlayPreviewStyle=false
@@ -599,6 +604,8 @@ File1[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/08-06-2026.kra
 File10[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/18-06-2026.kra
 File11[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/19-06-2026.kra
 File12[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/22-06-2026.kra
+File13[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/23-06-2026.kra
+File14[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/24-06-2026.kra
 File2[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/09-06-2026.kra
 File3[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/10-06-2026.kra
 File4[$e]=/mnt/sda2/math/PRECALCULUS/2026/6JUNE/11-06-2026.kra
@@ -611,6 +618,8 @@ Name1=08-06-2026.kra
 Name10=18-06-2026.kra
 Name11=19-06-2026.kra
 Name12=22-06-2026.kra
+Name13=23-06-2026.kra
+Name14=24-06-2026.kra
 Name2=09-06-2026.kra
 Name3=10-06-2026.kra
 Name4=11-06-2026.kra

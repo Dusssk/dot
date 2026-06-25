@@ -38,7 +38,7 @@ vim.lsp.config("pyright", {
   root_markers = { "requirements.txt", "pyproject.toml" }
 })
 vim.lsp.config("ruff", {
-  cmd = { "ruff", "start" },
+  cmd = { "ruff", "server" },
   filetypes = { 'python' },
   root_markers = { "requirements.txt", "pyproject.toml" }
 })
