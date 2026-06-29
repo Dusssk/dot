@@ -21,7 +21,7 @@ hl.bind(mainMod .. "R", hl.dsp.exec_cmd(menu))
 hl.bind(shiftMod .. "S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 
 -- Window
-hl.bind(mainMod, hl.dsp.exec_cmd("hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"))
+hl.bind(mainMod .. "Y", hl.dsp.exec_cmd("hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"))
 hl.bind(mainMod .. "mouse:272", hl.dsp.window.drag(), { mouse = true, drag = true })
 hl.bind(mainMod .. "mouse:273", hl.dsp.window.float(), { mouse = true, click = true })
 
