@@ -1,3 +1,135 @@
 #!/bin/bash
 
+pacman_packages=(
+"base"
+"base-devel"
+"bash-language-server"
+"bat"
+"bibata-cursor-theme"
+"blueman"
+"bluez"
+"bluez-utils"
+"clang"
+"cliphist"
+"cmake"
+"ddgr"
+"discord"
+"docker"
+"docker-compose"
+"fd"
+"firefox"
+"fzf"
+"galculator"
+"ghidra"
+"git"
+"gst-plugin-pipewire"
+"htop"
+"huiontablet"
+"hyprland"
+"hyprpaper"
+"hyprpicker"
+"hyprshot"
+"hyprshutdown"
+"hyprsunset"
+"imagemagick"
+"intel-ucode"
+"kitty"
+"krita"
+"lazygit"
+"libcurl-compat"
+"libpulse"
+"linux"
+"linux-firmware"
+"linux-lts"
+"ltrace"
+"lua-language-server"
+"man-db"
+"man-pages"
+"matugen"
+"mpv"
+"ncdu"
+"neovim"
+"network-manager-applet"
+"networkmanager"
+"noto-fonts"
+"noto-fonts-cjk"
+"noto-fonts-emoji"
+"noto-fonts-extra"
+"npm"
+"ntfs-3g"
+"nwg-look"
+"openssh"
+"pacman-contrib"
+"pipewire"
+"pipewire-alsa"
+"pipewire-jack"
+"pipewire-pulse"
+"pyright"
+"python-pip"
+"ripgrep"
+"rofi"
+"ruff"
+"sof-firmware"
+"starship"
+"steam"
+"stow"
+"strace"
+"sudo"
+"swaync"
+"tailscale"
+"thunar"
+"timeshift"
+"tldr"
+"tmux"
+"tree"
+"ttf-firacode-nerd"
+"ttf-liberation"
+"ttf-nerd-fonts-symbols"
+"ufw"
+"unzip"
+"uv"
+"valgrind"
+"virtualbox"
+"virtualbox-host-modules-arch"
+"visual-studio-code-bin"
+"w3m"
+"waybar"
+"wireplumber"
+"wl-clipboard"
+"wpa_supplicant"
+"xdg-desktop-portal-hyprland"
+"xorg-xinput"
+"yay"
+"yay-debug"
+"youtube-tui"
+"zathura"
+"zathura-pdf-mupdf"
+)
+
+yay_package=(
+"goxlr-utility"
+)
+
+directory="$HOME/yay"
+pkgbuild="$directory/PKGBUILD"
+
+if [[ ! -d $directory ]] || [[ ! -e $pkgbuild ]]; then
+  mkdir $directory
+  git clone https://aur.archlinux.org/yay.git $directory
+  echo "Cloning yay into $directory"
+fi
+
+if makepkg -D $directory -si; then
+  for package in "${pacman_package[@]}"; do
+    if ! pacman -Q $package > /dev/null; then
+      sudo pacman -S --noconfirm $package
+    fi
+  done
+
+  for package in "${yay_package[@]}"; do
+    if ! yay -Q $package; then
+      yay -S --noconfirm $package
+    fi
+  done
+fi
 
