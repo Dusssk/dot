@@ -24,7 +24,6 @@ pacman_packages=(
 "git"
 "gst-plugin-pipewire"
 "htop"
-"huiontablet"
 "hyprland"
 "hyprpaper"
 "hyprpicker"
@@ -108,6 +107,7 @@ pacman_packages=(
 
 yay_package=(
 "goxlr-utility"
+"huiontablet"
 )
 
 directory="$HOME/yay"

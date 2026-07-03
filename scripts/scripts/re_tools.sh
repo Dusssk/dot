@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=("file" "strings" "objdump" "readelf" "ldd" "gdb" "gcore")
+packages=("file" "strings" "objdump" "readelf" "ldd" "gdb" "gcore" "strace" "ltrace" "iproute2" "lsof")
 
 for package in "${packages[@]}" do
   if ! pacman -Q $package > /dev/null; then
