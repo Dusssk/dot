@@ -18,11 +18,11 @@ hl.bind(mainMod .. "E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. "V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 hl.bind(mainMod .. "R", hl.dsp.exec_cmd(menu))
 
-hl.bind(shiftMod .. "S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(shiftMod .. "S", hl.dsp.exec_cmd("hyprshot -z -m region --clipboard-only"))
 
 -- Window
 hl.bind(mainMod .. "Y", hl.dsp.exec_cmd("hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"))
-hl.bind(mainMod .. "F", hl.dsp.window.fullscreen({ mode = toggle }))
+hl.bind(mainMod .. "O", hl.dsp.window.fullscreen({ mode = toggle }))
 hl.bind(mainMod .. "mouse:272", hl.dsp.window.drag(), { mouse = true, drag = true })
 hl.bind(mainMod .. "mouse:273", hl.dsp.window.float(), { mouse = true, click = true })
 
