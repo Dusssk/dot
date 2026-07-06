@@ -48,39 +48,12 @@ vim.lsp.config("lua_ls", {
   root_markers = { ".git" }
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'sh', 'bash' },
-  callback = function()
-    vim.lsp.start({
-      name = 'bashls',
-      cmd = { 'bash-language-server', 'start' },
-    })
-  end,
-})
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'python',
-  callback = function()
-    -- Start pyright
-    vim.lsp.start({
-      name = 'pyright',
-      cmd = { 'pyright-langserver', '--stdio' },
-    })
-    -- Start ruff
-    vim.lsp.start({
-      name = 'ruff',
-      cmd = { 'ruff', 'server' },
-    })
-  end,
-})
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'lua',
-  callback = function()
-    vim.lsp.start({
-      name = 'lua_ls',
-      cmd = { 'lua-language-server' },
-    })
-  end,
-})
+vim.lsp.enable("clangd")
+vim.lsp.enable("pyright")
+vim.lsp.enable("ruff")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("bashls")
+
 -- Auto Complete Fine tuning
 vim.opt.complete:append("o")
 vim.opt.completeopt = { "menuone", "noselect", "noinsert", "popup" }
@@ -141,9 +114,3 @@ vim.keymap.set('i', '<CR>', function()
   end
   return '<CR>'
 end, { expr = true })
-
-vim.lsp.enable("clangd")
-vim.lsp.enable("pyright")
-vim.lsp.enable("ruff")
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("bashls")

@@ -307,8 +307,8 @@ vim.api.nvim_set_keymap("t", "<F9>", ".venv\\scripts\\activate<CR>", { noremap =
 
 -- Diagnostic
 vim.keymap.set("n", "<leader>f", "", { desc = "Diagnostic & Symbols" })
-vim.keymap.set("n", "<leader>fd", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
--- vim.keymap.set("n", "<leader>fd", vim.diagnostic.open_float, { desc = "Diagnostic" })
+vim.keymap.set("n", "<leader>ff", vim.diagnostic.open_float, { desc = "Floating Diagnostic" })
+vim.keymap.set("n", "<leader>fl", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
 
 -- Symbols
 vim.keymap.set("n", "<leader>fs", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
