@@ -28,14 +28,14 @@ output_path = "~/.config/nvim/lua/config/colors.lua"
 post_hook = "killall -SIGUSR1 nvim 2>/dev/null || true"
 
 [templates.gtk3]
-input_path = '~/.config/matugen/templates/gtk.css'
-output_path = '~/.config/gtk-3.0/gtk.css'
-# post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+input_path = '~/.config/matugen/templates/gtk-3.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
 
 [templates.gtk4]
-input_path = '~/.config/matugen/templates/gtk.css'
-output_path = '~/.config/gtk-4.0/gtk.css'
-# post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
+input_path = '~/.config/matugen/templates/gtk-4.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
 
 [templates.rofi]
 input_path = '~/.config/matugen/templates/rofi-colors.rasi'

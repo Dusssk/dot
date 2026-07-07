@@ -7,7 +7,7 @@ local altMod = "SUPER + ALT +"
 
 -- Applications
 local terminal = "kitty"
-local fileManager = "thunar"
+local fileManager = "nautilus"
 local menu = "rofi -show drun"
 
 -- General

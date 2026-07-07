@@ -5,7 +5,7 @@ hl.workspace_rule({
   monitor = "HDMI-A-2",
   default = true,
 
-  gaps_in = 4,
+  gaps_in = 2,
   gaps_out = 24,
   border_size = 2,
 })

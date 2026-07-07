@@ -3,8 +3,8 @@
 " -----------------------------------------------------------------------------
 
 " Colors
-set default-bg              "{{ colors.surface_container_lowest.dark.hex }}"
-set default-fg              "{{ colors.surface_container_lowest.dark.hex }}"
+set default-bg              "{{colors.surface_container_lowest.dark.hex}}"
+set default-fg              "{{colors.surface_container_lowest.dark.hex}}"
 set statusbar-bg            "{{colors.on_primary.default.hex}}"
 set statusbar-fg            "{{colors.primary.default.hex}}"
 
@@ -26,11 +26,11 @@ set completion-highlight-bg "{{colors.primary.default.hex}}"
 set completion-bg           "{{colors.on_primary.default.hex}}"
 set completion-fg           "{{colors.primary.default.hex}}"
 
-set notification-bg         "{{colors.on_primary.default.hex}}"
+set notification-bg         "{{ colors.surface_container_lowest.dark.hex }}"
 set notification-fg         "{{colors.primary.default.hex}}"
 
 set recolor                 "true"
-set recolor-lightcolor      "{{colors.on_primary.default.rgba | set_alpha: 1.0}}"
+set recolor-lightcolor      "{{colors.surface_container_lowest.dark.hex}}"
 set recolor-darkcolor       "{{colors.primary.default.hex}}"
 set recolor-reverse-video   "true"
 set recolor-keephue         "true"
