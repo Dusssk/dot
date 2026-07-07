@@ -1,12 +1,13 @@
-# ~/.config/hypr/modules/visual.lua
+-- ~/.config/hypr/modules/visual.lua
 
 local colors = require("modules.colors")
 
 hl.config({
   general = {
-    gaps_in = 2,
-    gaps_out = 8,
+    gaps_in = 4,
+    gaps_out = 4,
     border_size = 2,
+
     col = {
       inactive_border = colors.background,
       active_border = colors.inverse_primary,
@@ -21,7 +22,7 @@ hl.config({
     rounding = 11,
 
     blur = {
-      enabled = yes,
+      enabled = true,
       size = 7,
       passes = 2,
       ignore_opacity = true,
