@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# waybar starts using the matugen cmd
-if pgrep waybar > /dev/null; then
-  pkill waybar
-fi
-
-if pgrep hyprpaper > /dev/null; then
-  pkill hyprpaper
-  hyprpaper &
-else
-  hyprpaper &
-fi
-
 dependencies=("waybar" "hyprpaper" "matugen" "imagemagick")
 cache_dir="$HOME/.cache/wallchanger"
 wall_dir="/mnt/sda2/wall"
@@ -46,12 +34,24 @@ if [[ $# -eq 0 ]]; then
   command=$(<$file)
   echo "Loaded wallpaper from $file"
   eval $command
-else
-  wallpaper="$1"
-  command="matugen --prefer darkness image $wallpaper"
-  echo "$command" > "$file"
-  echo "Loaded wallpaper from input: $wallpaper"
-  eval $command
+fi
+
+for arg in "$@"; do
+  if [[ $arg = "-l" ]]; then
+    echo "$(ls $wall_dir)"
+    exit 0
+  else
+    wallpaper="$wall_dir/$1"
+    command="matugen --prefer darkness image $wallpaper"
+    echo "$command" > "$file"
+    echo "Loaded wallpaper from input: $wallpaper"
+    eval $command
+  fi
+done
+
+if pgrep waybar > /dev/null; then
+  pkill waybar
+  waybar &
 fi
 
 # rofi_input=""

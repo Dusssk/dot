@@ -16,6 +16,7 @@ setopt HIST_FIND_NO_DUPS
 setopt AUTOCD
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT
+bindkey -v
 
 # Load completion system
 autoload -Uz compinit && compinit   # Enable smart completion

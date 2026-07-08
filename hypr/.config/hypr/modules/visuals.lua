@@ -27,7 +27,7 @@ hl.config({
       passes = 2,
       ignore_opacity = true,
 
-      contrast = 1,
+      contrast = 2,
 
       xray = false,
       new_optimizations = true,
