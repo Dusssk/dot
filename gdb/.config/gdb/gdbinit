@@ -1,1 +1,28 @@
+source ~/.gef-2026.01.py
 set debuginfod enabled on
+
+# Default bo command (starts as 64-bit)
+define bo
+  break *(0x555555554000 + (unsigned long)$arg0)
+end
+
+# Switch between architectures
+define use32
+  define bo
+    break *(0x56555000 + (unsigned long)$arg0)
+  end
+  printf "Switched to 32-bit mode\n"
+end
+
+define use64
+  define bo
+    break *(0x555555554000 + (unsigned long)$arg0)
+  end
+  printf "Switched to 64-bit mode\n"
+end
+
+# Check current mode
+define which
+  # No output needed - just shows the current bo definition
+  show user-defined bo
+end
