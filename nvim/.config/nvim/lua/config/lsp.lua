@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.lsp.config("clangd", {
   cmd = { "clangd" },
-  filetypes = { 'c' },
+  filetypes = { 'c', "cpp" },
   root_markers = { ".clangd", "compile_commands.json" }
 })
 vim.lsp.config("bashls", {

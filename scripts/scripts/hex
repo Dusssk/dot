@@ -4,4 +4,4 @@ if ! pacman -Q python > /dev/null; then
   sudo pacman -S python
 fi
 
-python -c "print($1)"
+python -c "f'{print($1)} = {print(hex($1))}'"

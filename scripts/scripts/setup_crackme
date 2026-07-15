@@ -1,0 +1,27 @@
+#!/bin/bash
+
+SESSION="crackme"
+
+# Check if session exists, attach if it does
+tmux has-session -t $SESSION 2>/dev/null
+if [ $? -eq 0 ]; then
+    echo "Session $SESSION already exists. Attaching..."
+    tmux attach -t $SESSION
+    exit 0
+fi
+
+# --- Window 1: "crack" with two panes ---
+tmux new-session -d -s $SESSION -n "crack" -c /mnt/sda2/Downloads/crackme
+
+# Split into two panes (vertical split)
+tmux split-window -h -t $SESSION:1 -c /mnt/sda2/Downloads/crackme
+
+# --- Window 2: "manual" (empty) ---
+tmux new-window -t $SESSION -n "manual"
+
+# --- Window 3: "books" with nvim ---
+tmux new-window -t $SESSION -n "books" -c /mnt/sda2/pdf
+tmux send-keys -t $SESSION:3 "nvim ." C-m
+
+# Attach to session
+tmux attach-session -t $SESSION
