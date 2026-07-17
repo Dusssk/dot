@@ -103,7 +103,7 @@ pacman_packages=(
 "xdg-desktop-portal-hyprland"
 "xorg-xinput"
 "yay"
-"youtube-tui"
+"freetube"
 "zathura"
 "zathura-pdf-mupdf"
 "zip"

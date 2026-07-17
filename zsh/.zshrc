@@ -23,6 +23,8 @@ autoload -Uz compinit && compinit   # Enable smart completion
 
 alias ls="ls --color"
 alias cat="bat"
+alias objdump="objdump --visualize-jumps"
+alias crack="~/scripts/setup_crackme"
 
 # Completion with cached metadata file
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
