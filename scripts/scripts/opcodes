@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SESSION="opcodes"
+
+dependencies=("w3m" "ddgr")
+
+for dependency in "${dependencies[@]}"; do
+  if ! pacman -Q $dependency > /dev/null; then
+    sudo pacman -S $dependency
+  fi
+done
+
+# Check if session exists, attach if it does
+tmux has-session -t $SESSION 2>/dev/null
+if [ $? -eq 0 ]; then
+    echo "Session $SESSION already exists. Attaching..."
+    tmux attach -t $SESSION
+    exit 0
+fi
+
+tmux new-window -n "opcodes" \; send-keys "w3m 'http://ref.x86asm.net/coder64.html'" C-m
+
+# Attach to session
+tmux attach-session -t $SESSION
