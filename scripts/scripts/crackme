@@ -23,5 +23,12 @@ tmux new-window -t $SESSION -n "manual"
 tmux new-window -t $SESSION -n "books" -c /mnt/sda2/pdf
 tmux send-keys -t $SESSION:3 "nvim ." C-m
 
+# --- Window 4: "opcodes" with w3m ---
+tmux new-window -t $SESSION -n "opcodes"
+tmux send-keys -t $SESSION:4 "w3m 'http://ref.x86asm.net/coder64.html'" C-m
+
+# --- Window 5: "ascii" with man page ---
+tmux new-window -n "ascii" \; send-keys "man ascii" C-m
+
 # Attach to session
 tmux attach-session -t $SESSION
