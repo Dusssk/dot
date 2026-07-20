@@ -83,7 +83,7 @@ vim.keymap.set('n', '<leader>ot', function()
   vim.cmd('terminal')
 end, { desc = 'Terminal in directory' })
 
--- Open terminal in current Oil directory
+-- Open tmux terminal in current Oil directory
 vim.keymap.set('n', '<leader>ox', function()
   local dir = require('oil').get_current_dir()
   local escaped_dir = vim.fn.shellescape(dir)

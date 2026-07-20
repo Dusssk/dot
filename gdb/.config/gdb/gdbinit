@@ -20,9 +20,3 @@ define use64
   end
   printf "Switched to 64-bit mode\n"
 end
-
-# Check current mode
-define which
-  # No output needed - just shows the current bo definition
-  show user-defined bo
-end
