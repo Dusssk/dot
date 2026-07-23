@@ -1,7 +1,7 @@
 # ~/.zshrc
 
 # History
-HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTFILE="$HOME/.config/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
 
