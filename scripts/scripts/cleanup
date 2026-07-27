@@ -8,10 +8,11 @@ if sudo rm -rf ~/.cache/mozilla/; then
   echo "Cleaned the mozilla cache"
 fi
 
+if rm -rf .cache/*; then
+  echo "Cleaned up cache directory"
+fi
+
 if sudo pacman -Rns $(pacman -Qdtq); then
   echo "Cleaned up unneeded dependency packages"
 fi
 
-if rm -rf .cache/*; then
-  echo "Cleaned up cache directory"
-fi
