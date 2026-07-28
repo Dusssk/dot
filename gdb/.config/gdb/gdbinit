@@ -20,3 +20,41 @@ define use64
   end
   printf "Switched to 64-bit mode\n"
 end
+
+# Simple byte patcher with verification
+define p
+    if ($argc == 2)
+        set $old = *((unsigned char*)$arg0)
+        set *((unsigned char*)$arg0) = $arg1
+        printf "0x%x: 0x%02x → 0x%02x ", $arg0, $old, $arg1
+        if ($arg1 == *((unsigned char*)$arg0))
+            printf "✓\n"
+        else
+            printf "✗\n"
+        end
+    else
+        printf "Usage: p <address> <byte>\n"
+    end
+end
+
+# Toggle conditional jumps
+define pj
+    if ($argc == 1)
+        set $jumps = {0x74,0x75,0x70,0x71,0x72,0x73,0x7C,0x7D,0x7E,0x7F}
+        set $old = *((unsigned char*)$arg0)
+        # Simple toggle for je/jne
+        if ($old == 0x74)
+            set *((unsigned char*)$arg0) = 0x75
+            printf "0x%x: 0x74 (JE) → 0x75 (JNE) ✓\n", $arg0
+        else
+            if ($old == 0x75)
+                set *((unsigned char*)$arg0) = 0x74
+                printf "0x%x: 0x75 (JNE) → 0x74 (JE) ✓\n", $arg0
+            else
+                printf "0x%x: Not a conditional jump (0x%02x)\n", $arg0, $old
+            end
+        end
+    else
+        printf "Usage: pj <address>\n"
+    end
+end

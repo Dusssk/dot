@@ -1,17 +1,23 @@
 #!/bin/bash
 
-dependencies=("waybar" "hyprpaper" "matugen" "imagemagick")
+dependencies=("waybar" "hyprpaper" "matugen" "imagemagick" "coreutils")
 cache_dir="$HOME/.cache/wallchanger"
 wall_dir="/mnt/sda2/wall"
-mapfile -t wallpapers < <(find $wall_dir -type f -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" -o -name "*.gif")
 resolution="100x100"
 rofi_theme="$HOME/scripts/dependencies/wall/rofi-menu.rasi"
-
-wall_amount=$(echo ${#wallpapers[@]})
-random_wall_num=$(($RANDOM % ($wall_amount) + 0))
-
-base_cmd="matugen --prefer darkness image ${wallpapers[$random_wall_num]}"
 file="$cache_dir/command"
+
+mapfile -t abs_wallpapers < <(find $wall_dir -type f -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" -o -name "*.gif")
+wallpapers=$(basename -a ${abs_wallpapers[@]})
+one_wallpapers=($(printf "%s\n" $wallpapers | grep -e "^1"))
+two_wallpapers=($(printf "%s\n" $wallpapers | grep -v "^1"))
+two_wall_amount=$(printf "%s\n" ${two_wallpapers[@]} | wc -l)
+one_wall_amount=$(printf "%s\n" ${one_wallpapers[@]} | wc -l)
+random_wall_num=$(($RANDOM % (${two_wall_amount[@]}) + 0))
+
+parent=($(dirname ${abs_wallpapers[@]}))
+whole_path="${parent[$random_wall_num]}/${two_wallpapers[$random_wall_num]}"
+base_cmd="matugen --prefer darkness image $whole_path"
 
 for dependency in ${dependencies[@]}; do
   if ! pacman -Q $dependency > /dev/null; then
@@ -25,7 +31,7 @@ if [[ ! -d $cache_dir ]] || [[ ! -f $file ]]; then
   echo "$base_cmd" > "$file"
 fi
 
-if [[ "$wall_amount" -eq 0 ]]; then
+if [[ "$two_wall_amount" -eq 0 ]]; then
   notify-send "ERROR: No wallpapers found at $wall_dir"
   exit 1
 fi
@@ -38,9 +44,16 @@ fi
 
 for arg in "$@"; do
   if [[ $arg = "-l" ]]; then
-    echo "$(ls $wall_dir)"
+    printf "%s\n" ${two_wallpapers[@]}
+    exit 0
+  elif [[ $arg = "-al" ]]; then
+    printf "%s\n" ${wallpapers[@]}
+    exit 0
+  elif [[ $arg = "-la" ]]; then
+    printf "%s\n" ${wallpapers[@]}
     exit 0
   else
+    echo ""
     wallpaper="$wall_dir/$1"
     command="matugen --prefer darkness image $wallpaper"
     echo "$command" > "$file"

@@ -8,7 +8,7 @@ if sudo rm -rf ~/.cache/mozilla/; then
   echo "Cleaned the mozilla cache"
 fi
 
-if rm -rf .cache/*; then
+if rm -rf .cache/* && sudo rm -rf /var/cache/*; then
   echo "Cleaned up cache directory"
 fi
 
