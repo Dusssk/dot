@@ -34,6 +34,5 @@
     // "battery",
     "clock",
     "group/tray-group"
-    // "group/tray-group"
   ]
 }

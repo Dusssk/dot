@@ -1,6 +1,6 @@
 {
   "custom/tray-arrow": {
-    "format": "{icon}",
+    "format": "  {icon} ",
     "tooltip": false,
     "format-icons": {
       "notification": "󱅫",

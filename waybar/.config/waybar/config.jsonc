@@ -9,11 +9,28 @@
   "margin-right": 10,
   "margin-left": 10,
   "margin-top": 2,
-  "modules-left": ["custom/omarchy", "hyprland/workspaces", ],
+    "include": [
+    "./modules/groups.jsonc",
+    "./modules/workspace.jsonc",
+    "./modules/distro.jsonc",
+    "./modules/storage.jsonc",
+    "./modules/system.jsonc",
+    "./modules/power-profiles-daemon.jsonc",
+    "./modules/workspace.jsonc",
+    "./modules/idle-ihibitor.jsonc",
+    "./modules/audio.jsonc",
+    "./modules/connections.jsonc",
+    "./modules/battery.jsonc",
+    "./modules/clock.jsonc",
+    "./modules/tray-notif.jsonc"
+  ],
+  "modules-left": ["custom/omarchy", "hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": [
-    "group/tray-expander",
+    // "group/tray-expander",
     "group/ctl",
+    "group/storage",
+    "group/tray-group",
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -223,10 +240,10 @@
     "custom/notification-silencing-indicator",
     "custom/update",
     "custom/separator#blank",
-    "bluetooth",
-    "network",
-    "pulseaudio",
-    "cpu"
+    // "bluetooth",
+    // "network",
+    "pulseaudio"
+    // "cpu"
     // "battery",
 	]
 },
