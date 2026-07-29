@@ -1,7 +1,7 @@
 -- ~/hypr/modules/work_rules.lua
 
 hl.workspace_rule({
-  workspace = 9,
+  workspace = 8,
   monitor = "HDMI-A-1",
   default = true,
 
@@ -11,7 +11,7 @@ hl.workspace_rule({
 })
 
 hl.workspace_rule({
-  workspace = 0,
+  workspace = 9,
   monitor = "HDMI-A-2",
   default = true,
 

@@ -11,13 +11,17 @@ mapfile -t abs_wallpapers < <(find $wall_dir -type f -o -name "*.png" -o -name "
 wallpapers=$(basename -a ${abs_wallpapers[@]})
 one_wallpapers=($(printf "%s\n" $wallpapers | grep -e "^1"))
 two_wallpapers=($(printf "%s\n" $wallpapers | grep -v "^1"))
-two_wall_amount=$(printf "%s\n" ${two_wallpapers[@]} | wc -l)
 one_wall_amount=$(printf "%s\n" ${one_wallpapers[@]} | wc -l)
-random_wall_num=$(($RANDOM % (${two_wall_amount[@]}) + 0))
+two_wall_amount=$(printf "%s\n" ${two_wallpapers[@]} | wc -l)
+one_random_wall=$(($RANDOM % (${one_wall_amount[@]}) + 0))
+two_random_wall=$(($RANDOM % (${two_wall_amount[@]}) + 0))
 
 parent=($(dirname ${abs_wallpapers[@]}))
-whole_path="${parent[$random_wall_num]}/${two_wallpapers[$random_wall_num]}"
-base_cmd="matugen --prefer darkness image $whole_path"
+abs_one_wall="${parent[$one_random_wall]}/${one_wallpapers[$one_random_wall]}"
+abs_two_wall="${parent[$two_random_wall]}/${two_wallpapers[$two_random_wall]}"
+base_cmd="matugen --prefer darkness image "
+random_one_cmd="$base_cmd $abs_one_wall"
+random_two_cmd="$base_cmd $abs_two_wall"
 
 for dependency in ${dependencies[@]}; do
   if ! pacman -Q $dependency > /dev/null; then
@@ -52,6 +56,12 @@ for arg in "$@"; do
   elif [[ $arg = "-la" ]]; then
     printf "%s\n" ${wallpapers[@]}
     exit 0
+  elif [[ $arg = "-r" ]]; then
+    eval $random_two_cmd
+  elif [[ $arg = "-ra" ]]; then
+    eval $random_one_cmd
+  elif [[ $arg = "-ar" ]]; then
+    eval $random_one_cmd
   else
     echo ""
     wallpaper="$wall_dir/$1"
