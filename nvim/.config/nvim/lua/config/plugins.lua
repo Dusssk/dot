@@ -107,7 +107,7 @@ require("oil").setup({
             -- Open a new Kitty window with kitten icat
             vim.fn.jobstart({
               "kitty", "sh", "-c",
-              "kitten icat " .. vim.fn.shellescape(path) .. " && echo '\n\nPress Enter to close...' && read"
+              "kitty icat " .. vim.fn.shellescape(path) .. " && echo '\n\nPress Enter to close...' && read"
             }, { detach = true })
           else
             require("oil.actions").select.callback()

@@ -37,6 +37,26 @@ define p
     end
 end
 
+# Breakpoint at entry
+define entry
+   python
+import re
+import gdb
+from time import sleep
+from subprocess import run
+
+gdb.execute("starti", to_string=False)
+output = gdb.execute("info files", to_string=True)
+
+for line in output.splitlines():
+    if "Entry point" in line:
+        entry = line.split()[-1]
+        gdb.execute(f"break *{entry}")
+        gdb.execute("continue")
+        break
+    end
+end
+
 # Toggle conditional jumps
 define pj
     if ($argc == 1)

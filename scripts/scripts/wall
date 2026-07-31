@@ -19,7 +19,7 @@ two_random_wall=$(($RANDOM % (${two_wall_amount[@]}) + 0))
 parent=($(dirname ${abs_wallpapers[@]}))
 abs_one_wall="${parent[$one_random_wall]}/${one_wallpapers[$one_random_wall]}"
 abs_two_wall="${parent[$two_random_wall]}/${two_wallpapers[$two_random_wall]}"
-base_cmd="matugen --prefer darkness image "
+base_cmd="matugen --prefer darkness image"
 random_one_cmd="$base_cmd $abs_one_wall"
 random_two_cmd="$base_cmd $abs_two_wall"
 
@@ -32,7 +32,7 @@ done
 if [[ ! -d $cache_dir ]] || [[ ! -f $file ]]; then
   mkdir -p $cache_dir
   echo "Exported random wallpaper from '$wall_dir' into '$cache_dir'"
-  echo "$base_cmd" > "$file"
+  echo "$random_two_cmd" > "$file"
 fi
 
 if [[ "$two_wall_amount" -eq 0 ]]; then
@@ -58,6 +58,7 @@ for arg in "$@"; do
     exit 0
   elif [[ $arg = "-r" ]]; then
     eval $random_two_cmd
+    printf "%s " "$random_two_cmd" > "$file"
   elif [[ $arg = "-ra" ]]; then
     eval $random_one_cmd
   elif [[ $arg = "-ar" ]]; then
