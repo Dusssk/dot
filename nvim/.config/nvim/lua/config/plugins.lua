@@ -4,6 +4,7 @@ vim.pack.add({
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/RRethy/base16-nvim",
+  "https://github.com/mbbill/undotree"
 })
 
 require("nvim-autopairs").setup()
@@ -15,6 +16,9 @@ require("which-key").setup({
 -- GUIS
 vim.keymap.set("n", "<leader>e", "<Nop>", { desc = "GUIS" })
 vim.keymap.set("n", "<leader>ee", "<CMD>Oil<CR>", { desc = "Open Oil File Explorer" })
+
+-- Undo Tree
+vim.keymap.set("n", "<leader>eu", "<CMD>UndotreeToggle<CR>", { desc = "Open Undotree" })
 
 -- OIL
 require("oil").setup({

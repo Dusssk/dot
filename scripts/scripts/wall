@@ -46,8 +46,44 @@ if [[ $# -eq 0 ]]; then
   eval $command
 fi
 
+
+
+rofi_menu () {
+  rofi_input=""
+  for image in "${two_wallpapers[@]}"; do
+    thumbnail="$cache_dir/${image}"
+
+    if [[ ! -f "$thumbnail" ]]; then
+      magick "$image" -auto-orient -thumbnail "${resolution}^" -gravity center -extent "$resolution" "$thumbnail"
+    fi
+    rofi_input+="${image}\0icon\x1fthumbnail://${thumbnail}\n"
+  done
+
+  selected_wall=$(echo -en "$rofi_input" | rofi -dmenu \
+    -i \
+    -show-icons \
+    -theme "$rofi_theme" \
+    -p "Choose wallpaper" \
+    -format 's' \
+    -selected-row 0
+  )
+
+  eval "$base_cmd $parent/$selected_wall"
+  echo "$base_cmd $parent/$selected_wall" > $file
+}
+
+arg_parser () {
+  for arg in "$@"; do
+   if [[ $arg = "^-" ]]; then
+     f
+   fi
+  done
+}
+
 for arg in "$@"; do
-  if [[ $arg = "-l" ]]; then
+  if [[ $arg = "-i" ]]; then
+    rofi_menu
+  elif [[ $arg = "-l" ]]; then
     printf "%s\n" ${two_wallpapers[@]}
     exit 0
   elif [[ $arg = "-al" ]]; then
@@ -77,23 +113,3 @@ if pgrep waybar > /dev/null; then
   pkill waybar
   waybar &
 fi
-
-# rofi_input=""
-# for image in "${wallpapers[@]}"; do
-#   basename=$(basename $image)
-#   thumbnail="$cache_dir/${basename}.png"
-#
-#   if [[ ! -f "$thumbnail" ]]; then
-#     convert "$image" -auto-orient -thumbnail "${resolution}^" -gravity center -extent "$resolution" "$thumbnail"
-#     rofi_input+="${basename}\0icon\x1f${resolution}\x1finfo\x1f${thumbnail}\n"
-#   fi
-#
-#
-# SELECTED_INDEX=$(echo -en "$rofi_input" | rofi -dmenu \
-#     -i \
-#     -show-icons \
-#     -theme "$rofi_theme" \
-#     -p "Choose wallpaper" \
-#     -format 'i' \
-#     -selected-row 0
-# )
