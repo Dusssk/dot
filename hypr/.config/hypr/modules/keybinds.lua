@@ -15,7 +15,7 @@ hl.bind(mainMod .. "T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. "Q", hl.dsp.window.close())
 hl.bind(mainMod .. "M", hl.dsp.exec_cmd("~/.config/rofi/launchers/powermenu.sh"))
 hl.bind(mainMod .. "E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. "V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
+hl.bind(mainMod .. "V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu -p Clipboard | cliphist decode | wl-copy"))
 hl.bind(mainMod .. "R", hl.dsp.exec_cmd(menu))
 
 hl.bind(shiftMod .. "S", hl.dsp.exec_cmd("hyprshot -z -m region --clipboard-only"))
