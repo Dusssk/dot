@@ -7,22 +7,32 @@ resolution="100x100"
 rofi_theme="$HOME/scripts/dependencies/wall/rofi-menu.rasi"
 file="$cache_dir/command"
 
-mapfile -t abs_wallpapers < <(find $wall_dir -type f -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" -o -name "*.gif")
-wallpapers=($(basename -a ${abs_wallpapers[@]}))
-parent=$(dirname $abs_wallpapers)
+mapfile -t abs_wallpapers < <(find $wall_dir -type f -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" -o -name "*.gif")
+wallpapers=($(basename -a "${abs_wallpapers[@]}"))
+parent=$(dirname "${abs_wallpapers[0]}")
 
-wall_amount=$(ls -1 $wall_dir | wc -l)
-one_wallpapers=($(ls -1 $wall_dir | grep -e "^å"))
-two_wallpapers=($(ls -1 $wall_dir | grep -v "^å"))
-one_wall_amount=$(printf "%s\n" ${one_wallpapers[@]} | wc -l)
-two_wall_amount=$(printf "%s\n" ${two_wallpapers[@]} | wc -l)
-one_random_wall=$(($RANDOM % (${one_wall_amount[@]}) + 0))
-two_random_wall=$(($RANDOM % (${two_wall_amount[@]}) + 0))
-random_wall=$(($RANDOM % (${wall_amount[@]}) + 0))
+if [[ ${#wallpapers[@]} -eq 0 ]]; then
+    notify-send "ERROR: No wallpapers found at $wall_dir"
+    exit 1
+fi
 
-abs_one_wall="$parent/${one_wallpapers[$one_random_wall]}"
-abs_two_wall="$parent/${two_wallpapers[$two_random_wall]}"
-abs_wall="${parent[$random_wall]}/${wallpapers[$random_wall]}"
+parent=$(dirname "${abs_wallpapers[0]}")
+wallpapers=($(basename -a "${abs_wallpapers[@]}"))
+wall_amount=${#wallpapers[@]}
+
+one_wallpapers=($(printf "%s\n" "${wallpapers[@]}" | grep -e "^å"))
+two_wallpapers=($(printf "%s\n" "${wallpapers[@]}" | grep -v "^å"))
+one_wall_amount=${#one_wallpapers[@]}
+two_wall_amount=${#two_wallpapers[@]}
+
+if [[ $two_wall_amount -gt 0 ]]; then
+    two_random_wall=$((RANDOM % two_wall_amount))
+    abs_two_wall="$parent/${two_wallpapers[$two_random_wall]}"
+fi
+
+random_wall=$((RANDOM % wall_amount))
+abs_wall="${abs_wallpapers[$random_wall]}"
+
 base_cmd="matugen --prefer darkness image"
 random_one_cmd="$base_cmd $abs_one_wall"
 random_two_cmd="$base_cmd $abs_two_wall"
@@ -41,77 +51,89 @@ if [[ ! -d $cache_dir ]] || [[ ! -f $file ]]; then
   echo "$random_two_cmd" > "$file"
 fi
 
-if [[ "${#wall_list}" -eq 0 ]]; then
-  notify-send "ERROR: No wallpapers found at $wall_dir"
-  exit 1
-fi
-
-rofi_menu () {
-  rofi_input=""
+rofi_thumbnails() {
+  local rofi_input=""
   for image in "${wall_list[@]}"; do
-    thumbnail="$cache_dir/$image"
+      local thumbnail="$cache_dir/$image"
+      local abs_image="$parent/$image"
 
-    if [[ ! -f "$thumbnail" ]]; then
-      magick "$image" -auto-orient -thumbnail "${resolution}^" -gravity center -extent "$resolution" "$thumbnail"
-    fi
-    rofi_input+="${image}\0icon\x1fthumbnail://${thumbnail}\n"
+      if [[ ! -f "$thumbnail" ]]; then
+          magick "$abs_image" -auto-orient -thumbnail "${resolution}^" -gravity center -extent "$resolution" "$thumbnail"
+      fi
+      rofi_input+="${image}\0icon\x1fthumbnail://${thumbnail}\n"
   done
-
-  selected_wall=$(echo -en "$rofi_input" | rofi -dmenu \
-    -i \
-    -show-icons \
-    -theme "$rofi_theme" \
-    -p "Choose wallpaper" \
-    -format 's' \
-    -selected-row 0
-  )
-  selected_img="$parent/$selected_wall"
-  selected_cmd="$base_cmd $selected_img"
-  if [[ ! -f $selected_img ]]; then
-    exit 0
-  fi
-  eval $selected_cmd
-  echo "$selected_cmd" > $file
+  echo -n "$rofi_input"
 }
 
-wall_arg () {
-  echo ""
-  wallpaper="$wall_dir/$OPTARG"
-  command="matugen --prefer darkness image $wallpaper"
+rofi_selection() {
+  local rofi_input
+  rofi_input=$(rofi_thumbnails)
+
+  selected_wall=$(echo -en "$rofi_input" | rofi -dmenu \
+      -i \
+      -show-icons \
+      -theme "$rofi_theme" \
+      -p "Choose wallpaper" \
+      -format 's' \
+      -selected-row 0)
+
+  if [[ -z "$selected_wall" ]]; then
+      exit 0
+  fi
+
+  selected_img="$parent/$selected_wall"
+  if [[ ! -f "$selected_img" ]]; then
+    notify-send "ERROR: Selected wallpaper not found"
+    exit 1
+  fi
+
+  if matugen --prefer darkness image "$selected_img"; then
+    echo "$base_cmd $selected_img" > "$file"
+    notify-send "Wallchanger" "Applied wallpaper: $selected_wall"
+  else
+    notify-send "ERROR: Failed to apply wallpaper"
+    exit 1
+  fi
+}
+
+wall_arg() {
+  local wallpaper="$wall_dir/$OPTARG"
+  local command="$base_cmd $wallpaper"
   echo "$command" > "$file"
-  echo "Loaded wallpaper from input: $wallpaper"
-  eval $command
+  notify-send "Wallchanger" "Loaded wallpaper from input: $wallpaper"
+  $command
 }
 
 if [[ $# -eq 0 ]]; then
-  command=$(<$file)
+  command=$(<"$file")
   echo "Loaded wallpaper from $file"
-  eval $command
+  $command
 else
   list="0"
   menu="0"
 
   while getopts ":ralidw:" flag; do
     case "${flag}" in
-      r) eval $random_two_cmd ;;
+      r) $random_two_cmd ;;
       a) wall_list=("${wallpapers[@]}") ;;
       l) list="1" ;;
       i) menu="1" ;;
       w) wall_arg ;;
+      \?) echo "Usage: $0 [-r] [-a] [-l] [-i] [-w wallpaper]" >&2; exit 1 ;;
     esac
   done
 
   if [[ $list -eq 1 ]]; then
-    printf "%s\n" ${wall_list[@]}
+    printf "%s\n" "${wall_list[@]}"
     exit 0
   fi
 
   if [[ $menu -eq 1 ]]; then
-    rofi_menu
+    rofi_selection
   fi
 fi
 
 if pgrep waybar > /dev/null; then
   pkill waybar
-  waybar > /dev/null &
+  waybar &
 fi

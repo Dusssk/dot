@@ -1,18 +1,30 @@
 #!/bin/bash
 
-if sudo rm -rf ~/.cache/debuginfod_client/; then
-  echo "Cleaned the debuginfod cache"
+if ! sudo rm -rf ~/.cache/debuginfod_client/; then
+  echo "Error Cleaning the debuginfod cache"
+  exit 1
 fi
 
-if sudo rm -rf ~/.cache/mozilla/; then
-  echo "Cleaned the mozilla cache"
+if ! mv "$HOME/.cache/wallchanger/command" "$HOME/command"; then
+  echo "Error while temporarily moving the wallchanger cache"
+  exit 1
+else
+  if ! rm -rf $HOME/.cache/* && sudo rm -rf /var/cache/*; then
+    echo "Error Cleaning up cache directory"
+    exit 1
+  fi
+
+  wall_dir="$HOME/.cache/wallchanger"
+  if [[ ! -d "$wall_dir" ]]; then
+    mkdir -p "$wall_dir"
+  fi
+
+  mv "$HOME/command" "$HOME/.cache/wallchanger/command"
 fi
 
-if rm -rf .cache/* && sudo rm -rf /var/cache/*; then
-  echo "Cleaned up cache directory"
+if ! sudo pacman -Rns $(pacman -Qdtq); then
+  # echo "Error Cleaning up unneeded dependency packages"
+  echo ""
 fi
 
-if sudo pacman -Rns $(pacman -Qdtq); then
-  echo "Cleaned up unneeded dependency packages"
-fi
-
+echo "Cleaned up the debuginfod & cache directories"
