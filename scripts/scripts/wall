@@ -11,9 +11,9 @@ mapfile -t abs_wallpapers < <(find $wall_dir -type f -o -name "*.png" -o -name "
 wallpapers=($(basename -a ${abs_wallpapers[@]}))
 parent=$(dirname $abs_wallpapers)
 
-wall_amount=$(ls -1 | wc -l)
-one_wallpapers=($(ls -1 | grep -e "^å"))
-two_wallpapers=($(ls -1 | grep -v "^å"))
+wall_amount=$(ls -1 $wall_dir | wc -l)
+one_wallpapers=($(ls -1 $wall_dir | grep -e "^å"))
+two_wallpapers=($(ls -1 $wall_dir | grep -v "^å"))
 one_wall_amount=$(printf "%s\n" ${one_wallpapers[@]} | wc -l)
 two_wall_amount=$(printf "%s\n" ${two_wallpapers[@]} | wc -l)
 one_random_wall=$(($RANDOM % (${one_wall_amount[@]}) + 0))
@@ -83,13 +83,6 @@ wall_arg () {
   eval $command
 }
 
-restart_waybar () {
-  if pgrep waybar > /dev/null; then
-    pkill waybar
-    waybar > /dev/null &
-  fi
-}
-
 if [[ $# -eq 0 ]]; then
   command=$(<$file)
   echo "Loaded wallpaper from $file"
@@ -97,7 +90,8 @@ if [[ $# -eq 0 ]]; then
 else
   list="0"
   menu="0"
-  while getopts ":raliw:" flag; do
+
+  while getopts ":ralidw:" flag; do
     case "${flag}" in
       r) eval $random_two_cmd ;;
       a) wall_list=("${wallpapers[@]}") ;;
@@ -111,9 +105,13 @@ else
     printf "%s\n" ${wall_list[@]}
     exit 0
   fi
+
   if [[ $menu -eq 1 ]]; then
     rofi_menu
   fi
 fi
 
-restart_waybar
+if pgrep waybar > /dev/null; then
+  pkill waybar
+  waybar > /dev/null &
+fi
