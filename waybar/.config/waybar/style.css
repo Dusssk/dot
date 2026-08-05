@@ -3,7 +3,7 @@
 * {
   color: @foreground;
   border: none;
-  border-radius: 14;
+  border-radius: 14px;
   min-height: 0;
   font-family: 'FiraCode Nerd Font';
   font-size: 12px;
