@@ -47,12 +47,18 @@ vim.lsp.config("lua_ls", {
   filetypes = { 'lua' },
   root_markers = { ".git" }
 })
+vim.lsp.config("qmlls", {
+  cmd = { "qmlls6" },
+  filetypes = { 'qml', 'qmldir' },
+  root_markers = { ".git", "CMakeLists.txt", "qt-project" }
+})
 
 vim.lsp.enable("clangd")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("bashls")
+vim.lsp.enable("qmlls")
 
 -- Auto Complete Fine tuning
 vim.opt.complete:append("o")
