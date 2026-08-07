@@ -25,11 +25,6 @@ two_wallpapers=($(printf "%s\n" "${wallpapers[@]}" | grep -v "^å"))
 one_wall_amount=${#one_wallpapers[@]}
 two_wall_amount=${#two_wallpapers[@]}
 
-if [[ $two_wall_amount -gt 0 ]]; then
-    two_random_wall=$((RANDOM % two_wall_amount))
-    abs_two_wall="$parent/${two_wallpapers[$two_random_wall]}"
-fi
-
 random_wall=$((RANDOM % wall_amount))
 abs_wall="${abs_wallpapers[$random_wall]}"
 
@@ -88,7 +83,7 @@ rofi_selection() {
   fi
 
   if matugen --prefer darkness image "$selected_img"; then
-    echo "$base_cmd $selected_img" > "$file"
+    echo "$base_cmd $selected_img" > "$file"1yyyyyy
     notify-send "Wallchanger" "Applied wallpaper: $selected_wall"
   else
     notify-send "ERROR: Failed to apply wallpaper"
