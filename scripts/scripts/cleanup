@@ -11,7 +11,6 @@ if ! mv "$HOME/.cache/wallchanger/command" "$HOME/command"; then
 else
   if ! rm -rf $HOME/.cache/* && sudo rm -rf /var/cache/*; then
     echo "Error Cleaning up cache directory"
-    exit 1
   fi
 
   wall_dir="$HOME/.cache/wallchanger"
@@ -22,7 +21,7 @@ else
   mv "$HOME/command" "$HOME/.cache/wallchanger/command"
 fi
 
-if ! sudo pacman -Rns $(pacman -Qdtq); then
+if ! sudo pacman -Rns $(pacman -Qdtq) > /dev/null 2>&1; then
   # echo "Error Cleaning up unneeded dependency packages"
   echo ""
 fi

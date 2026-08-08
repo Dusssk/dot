@@ -7,6 +7,8 @@ fi
 python -c "
 hex_str = str(hex($1))
 hex_value = str($1)
+binary_value = bin($1)
 print(hex_value)
 print(hex_str)
+print(binary_value)
 "

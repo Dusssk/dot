@@ -1,19 +1,22 @@
 #!/bin/bash
 
 if ! sudo pacman -Syu --noconfirm; then
-  echo "Error during system update"
-  exit 1
+    echo "Error during system update"
+    exit 1
 fi
 
+notify-send "System sucessfully updated"
+
 if ! sudo timeshift --create --comments "after system update"; then
-  echo "Error during timeshift snapshot creation"
-  exit 1
+    echo "Error during timeshift snapshot creation"
+    exit 1
 fi
 
 if ! sudo timeshift --delete <<< "0"; then
-  echo "Error during deletion of old timeshift snapshot"
-  exit 1
+    echo "Error during deletion of old timeshift snapshot"
+    exit 1
 else
-  exit 0
+    notify-send "Successfully created new timeshift snapshot"
+    exit 0
 fi
 
