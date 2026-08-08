@@ -21,8 +21,7 @@ else
   mv "$HOME/command" "$HOME/.cache/wallchanger/command"
 fi
 
-if ! sudo pacman -Rns $(pacman -Qdtq) > /dev/null 2>&1; then
-  # echo "Error Cleaning up unneeded dependency packages"
+if ! sudo pacman -Rns $(pacman -Qdtq) > /dev/null; then
   echo ""
 fi
 
