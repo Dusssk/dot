@@ -1,0 +1,53 @@
+{
+    "version": "2.0",
+    "name": "some_blend.blend",
+    "rss": {
+        "enabled": true,
+        "path": "some_path.rss"
+    },
+
+    "global_percentage": {
+        "enabled": false,
+        "value": 50
+    },
+
+    "global_size": {
+        "enabled": false,
+        "value": [1920, 1080]
+    },
+
+    "ignore_border": true,
+    "blender_bin": "/usr/bin/blender",
+
+    "notifications": {
+        "sound":  {
+            "enabled": false,
+            "path": "some_sound.wav"
+        },
+
+        "desktop":  {
+            "enabled": false
+        }
+    },
+
+    "poweroff": {
+        "enabled": true,
+        "type": "SLEEP"
+    },
+
+    "pre_hook": {
+        "enabled": true,
+        "type": "COMMAND",
+        "cmd": "echo 'yes'",
+        "script": ""
+    },
+
+    "post_hook": {
+        "enabled": true,
+        "type": "COMMAND",
+        "cmd": "echo 'yes'",
+        "script": ""
+    },
+
+    "jobs": []
+}

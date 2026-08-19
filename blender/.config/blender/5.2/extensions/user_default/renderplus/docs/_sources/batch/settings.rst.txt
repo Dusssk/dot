@@ -1,0 +1,104 @@
+Settings
+--------------
+
+.. image:: ../_static/screens/batch_settings.png
+
+Global settings are options that affect the batch or all the render jobs
+in it. To see the settings click the **gear icon** next to
+``Start Batch``.
+
++------------------------------+---------------------------------------+
+| Setting                      | Description                           |
++==============================+=======================================+
+| Global Size                  | Set a single size for all render jobs |
++------------------------------+---------------------------------------+
+| Global Percentage            | Set a size percentage for all render  |
+|                              | jobs                                  |
++------------------------------+---------------------------------------+
+| Ignore Render Border         | Check to disable the render border    |
+|                              | setting for all jobs.                 |
++------------------------------+---------------------------------------+
+| Overwrite                    | Overwrite existing render files       |
+|                              | or skip them                          |
++------------------------------+---------------------------------------+
+| Parallel Renders             | Number of render jobs to run at the   |
+|                              | same time                             |
++------------------------------+---------------------------------------+
+| Write log Files              | Write a log file for each job. If     |
+|                              | disabled, output will go into the     |
+|                              | terminal.                             |
++------------------------------+---------------------------------------+
+| Use RSS                      | Check to generate RSS feed            |
++------------------------------+---------------------------------------+
+| Disable addons               | Disable addons when rendering the     |
+|                              | batch. Useful for troubleshooting     |
++------------------------------+---------------------------------------+
+| Use Terminal                 | Run the batch inside a terminal       |
++------------------------------+---------------------------------------+
+| Power Off                    | Suspend or shutdown the computer when |
+|                              | the batch is done                     |
++------------------------------+---------------------------------------+
+| Notifications                | Notify using the desktop, a sound or  |
+|                              | email                                 |
++------------------------------+---------------------------------------+
+
+**Log files** are stored in the same folder as the rendered files. They
+are named “[OUTPUT_name]_log.txt“.
+
+**Global Size** will ignore size percentages (set in the dimensions
+panel) and use the same size for all jobs.
+
+The **Terminal** used for the Batch can be customized in the addon
+preferences.
+
+The **notifications** system is the same as for single renders. Check
+out the notifications section in Main settings for more info.
+
+Actions
+=======
+
+.. image:: ../_static/screens/batch_actions.png
+
+The actions tab lets you setup commands or Python scripts to run:
+- Before the batch starts
+- After the batch finishes
+- Before every render job starts
+- After every render job completes
+
+Note that the Python scripts are run in a separate instance of Blender.
+Also the current blendfile (used for the batch) is passed so you can run
+scripts on it.
+
+If you would like to change some basic properties I would recommend using
+Custom Overrides. However if you need more complex changes or operations
+on the file, don't forget to call `bpy.ops.wm.save_mainfile()` to save.
+
+
+RSS
+===
+
+RSS is a format used to publish updates on dynamic content like blogs or
+podcasts. A RSS document is often called a “feed” or “channel”. These
+feeds can be read using web browsers, web sites, desktop applications,
+mobile apps and more.
+
+Render+ can generate RSS feeds with information about running batches.
+You can use these feeds to monitor progress of any number of batches
+remotely.
+
+To enable it first click the gear button next to the “Start Batch”
+button to see the global settings. Then check the **“Use RSS”**
+checkbox. The RSS feed will available at `batch/rss`. If you
+are running the server locally with the default port,
+then it would be in `http://localhost:7777/batch/rss`.
+
+Render+ includes an item for each render job with information about it.
+The very first item in the list is a summary of the progress of the
+batch.
+
+If you’re into customizing your desktop you could use an application
+like Geektool (Mac) or Conky (Linux) to show the RSS feed right over
+your wallpaper. KDE (Linux) also has support widgets to show RSS feeds.
+
+For a (long) list of RSS readers check
+`Wikipedia <htt

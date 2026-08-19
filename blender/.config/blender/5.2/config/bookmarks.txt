@@ -1,0 +1,4 @@
+[Bookmarks]
+/mnt/sda2/Downloads/
+[Recent]
+/mnt/sda2/Downloads/

@@ -1,0 +1,347 @@
+Batch Renders
+=============
+
+.. image:: ../_static/screens/batch_main.png
+
+Batches let you run multiple renders in a sequence automatically. These
+render jobs can use different scenes and settings that override the ones
+set in the scene.
+
+Simply add and setup some render jobs, then click the ``Start Batch``
+button to run the batch.
+
+Step-by-step Workflow
+---------------------
+
+1.  Start by adding a new render job (click the **+** button in the
+    batch panel)
+2.  Give it a name by changing the ``name`` property or double-clicking
+    it’s name in the list
+3.  Select a scene to render, if you leave it blank it will use the
+    current one
+4.  Optionally select a camera or specific view layer to use
+5.  Set an output path for your job. This path must be different from
+    other jobs, if you leave it blank the path set in the output panel
+    will be used. Remember you can’t have two jobs with the same path
+    though.
+6.  Optionally set custom overrides for the job. See the
+    ``Custom Overrides`` section to learn more.
+7.  Repeat for each render job you want to include
+8.  Optionally set batch settings by clicking the triangle icon next to
+    the start button
+9.  Click the ``Start batch`` button to start the batch rendering
+10. Kick back and relax :)
+
+Render+ will switch to “Running Mode”. In this mode the job currently
+rendering will be automatically selected in the list and you will be
+able to see it’s progress and status below. You can click the **X**
+button to cancel that specific render job.
+
+When the batch is finished the title of the panel will change to
+“Finished”. You can then select jobs again and check their finished and
+render times. When you want to go back to normal click the “close”
+button.
+
+Under the hood
+--------------
+
+Render+ uses a small python application in the background called the
+Batch Server to manage renderjobs. The batch server communicates with
+the Render+ addon through a port via http. The addon takes care of
+starting the server, starting the batch, querying it’s status, and
+shutting down the server once the batch is done.
+
+The batch server is queried every 2 seconds (by default) when running a
+batch. You can change this via the preferences.
+
+.. note::
+
+    Render+ uses the port 7777 by default. If you are having trouble
+    starting batches, make sure you are not running another program that
+    uses that port at the same time. You can also change the port number in
+    the addon preferences.
+
+
+Render job panels
+-----------------
+
+Basic Settings
+~~~~~~~~~~~~~~
+
++---------------------------------------+------------------------------+
+| Setting                               | Description                  |
++=======================================+==============================+
+| Name                                  | An identifier for this       |
+|                                       | render job                   |
++---------------------------------------+------------------------------+
+| Scene                                 | Scene to use                 |
++---------------------------------------+------------------------------+
+| Camera                                | Camera to use (leave blank   |
+|                                       | to use the current active    |
+|                                       | camera)                      |
++---------------------------------------+------------------------------+
+| World                                 | World to use (leave blank to |
+|                                       | use the current active       |
+|                                       | world)                       |
++---------------------------------------+------------------------------+
+| View Layer                            | Use only a specific view     |
+|                                       | layer (leave blank to use    |
+|                                       | all enabled)                 |
++---------------------------------------+------------------------------+
+| Animation                             | Render an animation instead  |
+|                                       | of a still image             |
++---------------------------------------+------------------------------+
+| Custom Frame(s)                       | Render a specific frame (for |
+|                                       | stills)                      |
+| Run pre-render script                 | Run a python script in the   |
+|                                       | blendfile before rendering   |
++---------------------------------------+------------------------------+
+| Use External                          | Use an external blend file   |
++---------------------------------------+------------------------------+
+| Blend File                            | File path of the blend file  |
+|                                       | to use for this job (when    |
+|                                       | using external)              |
++---------------------------------------+------------------------------+
+
+
+Custom Frame(s)
+~~~~~~~~~~~~~~~
+
++---------------------------------------+------------------------------+
+| Setting                               | Description                  |
++=======================================+==============================+
+| Custom Frame                          | Render a specific frame      |
++---------------------------------------+------------------------------+
+| Frame start/end                       | Render a specific frame      |
+|                                       | range (for animations)       |
++---------------------------------------+------------------------------+
+| Frame Jump                            | How many frames to jump      |
+|                                       | ahead when rendering an      |
+|                                       | animation                    |
++---------------------------------------+------------------------------+
+
+.. note::
+
+    Note that custom frames accepts multiple comma-separated frames like
+    this "1,2,6,7". It also accepts frames relative to the start and end
+    of the frame range like this: "+2, -1". You can also input frame ranges,
+    which will be rendered as animations like this "2..10, 15..30". This will
+
+
+Output
+~~~~~~
+
++----------------+-----------------------------------------------------------+
+| Setting        | Description                                               |
++================+===========================================================+
+| Output         | File path to save to                                      |
++----------------+-----------------------------------------------------------+
+| Custom Size    | Image Size for this job in pixels                         |
++----------------+-----------------------------------------------------------+
+| File Format    | Image/Video format to use                                 |
++----------------+-----------------------------------------------------------+
+| Render Device  | Render using the CPU, a GPU or both (Cycles only)         |
++----------------+-----------------------------------------------------------+
+| Render Section | Render only a part of the image                           |
++----------------+-----------------------------------------------------------+
+
+.. note::
+    Some file formats may not be compiled in your version of Blender.
+    Render+ will tell you when you select one of them.
+
+
+Engine Settings
+~~~~~~~~~~~~~~~
+
++----------------+-----------------------------------------------------------+
+| Setting        | Description                                               |
++================+===========================================================+
+| Threads        | Use a specific number of CPU threads                      |
++----------------+-----------------------------------------------------------+
+| Use Turbo Tools| Use the Turbo Tools addon to render                       |
++----------------+-----------------------------------------------------------+
+| Samples        | Use a different number of samples to render (Cycles only) |
++----------------+-----------------------------------------------------------+
+
+
+If you set ``samples`` or ``threads`` to 0, Render+ will use the
+settings you have set in the scene. The same applies if you set
+``Render  Device`` to “Default”.
+
+If you select "Single GPU" for ``Render Device`` you will have a second
+menu to select which GPU to use. GPUs are detected when Blender starts.
+If you are rendering over a network you will have a number instead, since
+Render+ can't detect the GPUs from the server. To find out the GPUs available
+in the server you can use the ``--list-gpus`` parameter. :ref:`Refer to this
+page for more info<listingGPU>`.
+
+You can also choose "Use all devices" to use all CPUs and GPUs for rendering.
+
+Below the output setting you will also find the ``Show output folder``
+button. Clicking this button will open the folder where the rendered
+image will be saved. Note this option isn't available when rendering over
+the network.
+
+Render+ will also ask you to avoid Blender relative paths when rendering over
+a network. These are paths that start with "//". If you use this kind of
+paths your render files might end up in a temporary folder in the server.
+
+Toggling ``Render Section`` will show the coordinates of the section, as
+well as the ``Get from Viewport`` button. If you have a border render
+set (:kbd:``Ctrl+B`` in camera view), you can get it’s coordinates
+automatically by clicking that button.
+
+The `Use turbo tools` checkbox allows you to use the `Turbo Tools <https://www.blendermarket.com/products/turbo-tools-v3---turbo-render-turbo-comp-temporal-stabilizer>`_
+addon to render. This toggle will only be enabled if the addon is
+installed and enabled. Enabling this setting is the same as enabling
+Turbo Tools from the render properties panel, though only for a particular
+render job.
+Render+ will respect whatever path you set for the cache in the Turbo Tools
+panel while adding the render job name and index at the end. If no folder
+is specified, Render+ will set one up in the OS temporary folder.
+
+Render Passes
+~~~~~~~~~~~~~~
+
+The render passes panel lets you enable or disable the different render passes
+available for each render engine. Render+ will always render the full image
+(also known as the "Beauty Pass"). With this panel you can also render out
+different passes to other paths.
+
+Toggling passes here will make Render+ create a temporary node group in the
+compositor that takes the render pass and plugs it into a file output node.
+
+This change is only for rendering and isn't saved to blend files.
+
+.. image:: ../_static/screens/render_passes.png
+
+
+Custom Overrides
+~~~~~~~~~~~~~~~~
+
+Custom Overrides let you change anything in the scene, by automatically
+generating custom Python code for each render job.
+
+For more information on custom overrides, :ref:`custom`.
+
+
+Actions
+~~~~~~~
+
+Actions let you run an action before starting a render job. This
+works like the actions in batch settings.
+
+
+Options menu
+------------
+
+You can move render jobs up or down using the arrow buttons. Click the
+three-lines icon to access the following options.
+
++------------------------+--------------------------------------------------+
+| Option                 | Description                                      |
++========================+==================================================+
+| Duplicate              | Clone the selected render job                    |
++------------------------+--------------------------------------------------+
+| Move to Top/Bottom     | Move the current render job to the top or bottom |
++------------------------+--------------------------------------------------+
+| Enable/Disable all     | Enable or disable all jobs                       |
++------------------------+--------------------------------------------------+
+| Remove all render jobs | Clear the batch list                             |
++------------------------+--------------------------------------------------+
+| Change output paths    | Change output paths on all render jobs           |
++------------------------+--------------------------------------------------+
+| Generate BAT files     | Generate BAT scripts to run the batch without    |
+|                        | Render+ or the batch server. All necessary files |
+|                        | are written to a folder                          |
++------------------------+--------------------------------------------------+
+
+External Render Jobs
+--------------------
+
+External render jobs render scenes from other blend files. They are
+marked with a file icon in the batch list. You can make any render job
+use an external blend file by toggling the “use external” checkbox.
+
+You can leave the output path blank in external jobs, Render+ will use
+the output from the blend file. This way you can set different paths in
+each blend file, and then have the batch process use them automatically.
+
+You can also **select multiple blend files and create render jobs for
+them automatically** by using the “Add External Blends” option in the
+batch menu.
+
+Scripting
+---------
+
+You may be interested in scripting to extend R+ to fit your own needs
+better. You can find everything batch related in
+``bpy.context.scene.renderplus.batch``. These are the properties
+contained in it:
+
++-----------------+----------------------------------------------------+
+| Property        | Description                                        |
++=================+====================================================+
+| jobs            | List of render jobs                                |
++-----------------+----------------------------------------------------+
+| index           | Int, Index of the currently selected job in the ui |
++-----------------+----------------------------------------------------+
+| use_rss         | Boolean, True to write a RSS file                  |
++-----------------+----------------------------------------------------+
+| rss_path        | String, Filepath for RSS file                      |
++-----------------+----------------------------------------------------+
+| write_logs      | Boolean, True to write log files                   |
++-----------------+----------------------------------------------------+
+| use_global_size | Boolean, True to force a specific size             |
++-----------------+----------------------------------------------------+
+| global_size_x   | Int, horizontal global size in pixels              |
++-----------------+----------------------------------------------------+
+| global_size_y   | Int, vertical global size in pixels                |
++-----------------+----------------------------------------------------+
+| ignore_border   | Boolean, True to disable render border             |
++-----------------+----------------------------------------------------+
+
+Each job in the list contains the following properties:
+
+-  name
+-  scene
+-  layer
+-  camera
+-  enabled
+-  size_custom
+-  size_x
+-  size_y
+-  animation
+-  frame_custom
+-  frame_still
+-  frame_start
+-  frame_end
+-  output
+-  use_external
+-  blend_file (only set if use_external is True)
+-  overrides
+
+``Animation``, ``size_custom`` and ``frame_custom`` are booleans used to
+enable or disable settings.
+
+You can add new jobs with
+``bpy.context.scene.renderplus.batch.jobs.add()``. Use the python
+console to know more.
+
+You can also import Render+ modules and inspect them in the python
+console:
+
+.. code:: python
+
+      >>> import renderplus
+      >>> import renderplus.stats
+      >>> renderplus.stats.is_animation()
+      True
+      >>> help(renderplus.stats.is_running)
+      Help on function is_animation in module renderplus.stats:
+       is_animation()
+          Detect if we are rendering an animation.
+
+You may also want to run Blender from a console or terminal to watch the
+output. `Check the manual to launch blender from a
+terminal <http://wiki.blender.org/index.php/Doc:2.6/Manual/Render/Command_Line#Platforms>`__

@@ -1,0 +1,459 @@
+Changelog
+=========
+
+3.0.2
+----
+
+- ``fixed`` Fixed support for Blender 5
+- ``fixed`` Improvements to frame number removal in filenames
+
+3.0.1
+----
+
+- ``fixed`` Fix error when running the batch server in a terminal 
+- ``fixed`` Fix some cases where where Render+ would not detect correctly that a render job had finished
+- ``fixed`` Added a flag for Blender 4.5 so the job output property doesn't show red when using relative paths 
+
+3.0
+----
+
+- ``new`` New UI using Blender's subpanel system.
+- ``new`` New Quick Batch system. Quick batches can now be combined and use multiple scenes.
+- ``new`` New tool to change settings in multiple jobs quickly
+- ``new`` Option to enable/disable render passes. Each render job can now control which render passes are used.
+- ``new`` Configuration file for batch render server. The batch server can now take a TOML file for settings.
+- ``new`` Batch server can now have "workers" to distribute render jobs across multiple machines
+- ``new`` New simpler custom overrides UI. It's possible to pick properties from objects, cameras and more through the UI without writing Python.
+- ``fixed`` Use systems temp folder in Blender 4.2
+- ``fixed`` Fix bug when rendering with EXR in Blender +4.1
+- ``fixed`` Fix bug when using camera markers quick batches
+- ``fixed`` Fix and simplify the removal of frame numbers on still renders
+- ``improved`` Better logging
+- ``improved`` Now using the new Progress Bar in 4.1 (instead of the old float slider hack)
+- ``improved`` Cleaned up and refactored a lot of ancient code.
+- ``improved`` Make sure batch is finished before running power off options
+- ``improved`` Launch scripts for server now look for the path appropiately
+
+
+2.6.2
+----
+
+- ``fixed`` Port to Blender 4.2 extensions
+
+
+2.6.1
+----
+
+- ``fixed`` Fixed a bug when using certain characters in Windows paths
+- ``fixed`` Catch errors better on email notifications
+- ``fixed`` Make email notifications on batches work again
+- ``fixed`` Fixed Multilayer EXR rendering with turbo tools
+- ``fixed`` Improved removal of frame numbers on render files
+- ``fixed`` Fixed single GPU in Cycles for render jobs
+- ``new`` Add option in batch menu to apply current job settings to scene
+- ``new`` Add option to deactivate the view layer change in the render layers node
+
+
+2.6
+---
+
+- ``new`` Batch actions can now run Python scripts, besides shell commands
+- ``new`` Support for Turbo Tools
+- ``improved`` The file renaming system is more reliable, but since there can still be some corner cases it's disabled by default
+- ``fixed`` Better error catching for progress and timeouts
+- ``fixed`` Prevent race conditions for per-job custom python files
+- ``removed`` "Server stuck" threshold now removed
+- ``improved`` "Disable all addons" options now keeps Cycles enabled
+
+
+2.5
+---
+
+-  ``new`` New Frame jump setting for animations. Let's you control how many frames to move forward after rendering a
+frame in an animation
+- ``improved`` The still frame option now accepts multiple frames separated by commas like "1,2,4,6". It also accepts
+frames relative to the end and start ("+2" or "-1"). Also supports rendering multiple animation ranges (2..10)
+- ``improved`` Removed usages of ``with_stem()`` so it's still possible to run Render+ on Blender 2.79
+- ``fixed`` Fixed power off in batches
+- ``improved`` Rewrote the entire function to avoid overwrites, now it's easier to debug and works more reliably
+- ``improved`` Rewrote the entire parallel render code. Now it uses concurrent futures instead of multiprocessing.
+Now it's more reliable and less hacky.
+- ``fixed`` Render+ will now correctly mark render jobs as finished when the Blender instance quits
+- ``new`` New option in Global Settings to disable all addons when rendering. Useful for troubleshooting
+- ``new`` New option to generate .bat files to run batches without the batch server (Windows only for now)
+- ``new`` Replaced all the old blendfile code with the new one from BAT. Now Render+ can read blendfiles compressed
+with Blender 3+ (using Zstd).
+- ``new`` Option to run a Python script before running each renderjob. The script must be inside Blender
+- ``improved`` Improved debug prints
+- ``fixed`` Fixed a crash when enabling "Use terminal" on Windows
+- ``fixed`` Fixed Mac's Finder sometimes not opening the output path
+
+
+2.4
+---
+
+- ``improved`` Settings panel is now called "Single Render Settings" to make it clearer
+- ``improved`` Better startup message when starting the batch server from the command line.
+- ``improved`` The batch server now tries to figure out and show the network IP when started from the command line
+- ``improved`` Added scripts to start the batch server more easily
+- ``improved`` Lots of quality of code improvements
+- ``fixed`` Fixed sound notification for batches
+- ``fixed`` Bug when checking missing textures
+- ``fixed`` Several bugs in progress calculation
+- ``improved`` Progress bar now reacts and updates much faster
+- ``improved`` Progress calculation is more reliable
+- ``fixed`` Fixed removing frame numbers from filenames (though there's still some edge cases)
+- ``fixed`` Fixed rendertime format in batch panel
+- ``improved`` The batch server will change view layer in all layer nodes in the compositor now
+- ``improved`` The UI will display a warning when selecting a viewlayer that is
+  different from the one used in compositor nodes, since it could break some node setups.
+- ``improved`` Don't change the view layer in compositor nodes if it's not set in the render job
+- ``improved`` Select external files will use an empty output by default. This
+  way they will be output to the directories set in the files.
+- ``removed`` Removed color looks and tons of code no longer used
+- ``fixed`` Fixed a bug where disabled render jobs would show the queued icon
+- ``improved`` The batch server can now distinguish between rendering and compositing stages (only for single image renders)
+- ``improved`` Progress can now go back to zero again for single images. This can happen when rendering multiple passes.
+- ``fixed`` Fixed a bug when calculating progress after the first frame
+- ``fixed`` Fix a bug when writing the log in the batch server
+- ``fixed`` Fixed a bug when writing log files for render jobs
+- ``improved`` Initial Blender 3.0 (and Cycles X) support
+
+
+2.3
+---
+
+- ``new`` Parallel rendering. Render+ can start more than one job at a time.
+- ``improved`` Lower minimum for refresh time (new default of 0.05 seconds too)
+- ``fixed`` Jobs are marked as finished if progress is 100, regardless of the status of the subprocess
+- ``fixed`` Subprocess is killed if progress is already 100
+- ``improved`` RSS no longer depends on a file, but it's served directly from the batch server
+- ``improved`` RSS feeds now include progress percentage
+
+
+2.2
+---
+
+- ``new`` Network batch rendering. The batch server can now be run in a separate PC
+  and connect over a network. This is limited to running only one batch at a time for now.
+- ``new`` File uploading. Render+ will pack and upload blendfiles when rendering over
+  a network
+- ``new`` Button to check if server is responding (for network  renders)
+- ``new`` Custom overrides now support presets
+- ``new`` Custom overrides includes 4 example presets
+- ``changed`` Custom overrides don't auto include ``bpy.data.scenes[SCENE]`` anymore.
+  This lets them be more flexible and change different things.
+- ``changed`` Global percentage is now an integer value
+- ``removed`` Removed color looks quick batch since color looks are no longer available in Blender
+- ``improved`` Render jobs can now use all devices, all GPUs, only the CPU or only a single GPU
+- ``API change`` New /batch/start route to start batches and /batch/recipe to submit recipes
+- ``API change`` New route /batch/ready to check if server is ready to run batch
+- ``API change`` New route /test to ping server
+- ``API change`` DELETE /server route removed
+- ``API change`` New route /batch/file to upload files
+- ``changed`` The batch server is now built on Bottle
+- ``changed`` Render+ now uses the requests library
+- ``new`` Setting to change stuck threshold. Defaults to 30 minutes. If Render+ keeps
+  receiving the same message for this amount of time, it will consider the server stuck
+  and kill it (if it's local).
+- ``new`` Setting to disable the missing images check
+- ``fixed`` Fix bug when messages in stderr piled up and caused a deadlock, hanging the server
+- ``fixed`` Various clean-ups, updates and small fixes in the code.
+
+
+2.1
+---
+
+-  ``new`` Cancel batch and terminate batch server if it's hanging (returning the same reply all the time)
+-  ``new`` Mark input as incorrect when no camera is selected
+-  ``new`` Show only cameras in the camera input
+-  ``removed`` Removed the old CSS/XSLT files (missed them last time!)
+-  ``fixed`` Don't quit the server if we can't make a log file
+-  ``fixed`` Don't add an underscore if filename is empty in change output paths
+-  ``fixed`` Update hotmail/live/outlook smtp server
+-  ``fixed`` Prevent duplicate log messages
+-  ``new`` Server paramter to show debug messages in the terminal
+-  ``fixed`` Show server logs when enabling debug messages
+-  ``fixed`` Remove .001 in paths correctly
+-  ``improved`` Don't consider job as failed if there's a render file (even if Blender exited with error)
+-  ``fixed`` Fix autosave render when output path is empty
+-  ``new`` Change the view layer in the Render Layers Node when batch rendering with the compositor
+-  ``new`` Show an error if textures are missing in the batch (only for internal jobs)
+
+
+2.0
+---
+
+-  ``new`` Batch server. A full blown http server with a REST API, no more temp files!
+-  ``new`` The currently running render job can now be cancelled without
+   cancelling the rest of the batch
+-  ``new`` You can now check the progress of a render when using a supported render engine (Cycles and Eevee only for now)
+-  ``new`` Port option for the batch server in preferences
+-  ``new`` Option to never shutdown the batch server in preferences
+-  ``new`` Documentation button in the addon preferences to quickly
+   check the docs locally
+-  ``improved`` Much better UI for previous batch stats
+-  ``new`` Previous Batch mode now includes batch started and finished
+   date, as well as total rendertime
+-  ``new`` Previous Batch mode now includes statistics for the batch
+   (average, fastest, slowest)
+-  ``improved`` Much more organized UI for preferences
+-  ``port`` Ported for Blender 2.80
+-  ``new`` Added an option to print debug messages in the console
+-  ``new`` Add option to disable overwriting render files in batches
+-  ``new`` Render+ can now run custom commands before and after running
+   a batch, as well as before and after running render jobs
+-  ``improved`` Power off, notifications and actions in batch are
+   separated from the general settings
+-  ``improved`` Email notifications now include batch stats: average
+   time, slowest and fastest job.
+-  ``changed`` The *Previous Batch* button is now in the batch menu
+   instead of a separate button
+-  ``changed`` The Batch panel is now in the new *Output* tab
+-  ``removed`` Custom CSS for RSS files (we can have actual HTML clients
+   now)
+-  ``removed`` OpenGL buttons and settings. Blender now calls this
+   *Workbench* and treats it as a rendering engine.
+-  ``changed`` Global percentage is now disabled by default for batches
+-  ``improved`` Global percentage can now be set higher than 100% in
+   batches
+-  ``improved`` Fixed several tooltips that weren’t clear enough
+-  ``improved`` **Massive** Refactor. The new code is much cleaner and
+   more maintainable
+-  ``improved`` Debug/info messages take less space and lines now
+-  ``improved`` Markers Quick batch is now disabled if there are no
+   markers in scene
+-  ``improved`` The extensions setting in the output panel is when rendering batches
+-  ``improved`` Quick Batches for Markers, Cameras and Render Layers now
+   set default output paths
+
+.. _section-1:
+
+1.7
+---
+
+-  ``improved`` Better UI for external blends
+-  ``new`` External blend path now turns red if file is missing or
+   corrupt
+-  ``new`` External blend jobs are now autofilled when the blend path is
+   set
+-  ``new`` External blend jobs now have selection lists for scenes,
+   worlds, cameras and render layers
+-  ``new`` “Add external” tool. This option lets you select multiple
+   external files and add them as render jobs
+-  ``improved`` File selector only shows blend files when selecting an
+   external blend
+-  ``improved`` Fixed code style everywhere. Also made it more PEP8
+   compliant
+-  ``improved`` More robust logging code
+-  ``fixed`` R+ logger no longer conflicts with Flamenco/Blender ID
+   addon
+
+.. _section-2:
+
+1.5
+---
+
+-  ``new`` Default Output path preference. The user can now set a
+   convention for new output paths in new render jobs.
+-  ``new`` Test Connection button for Email settings. The connection to
+   the SMTP server can now be tested without sending any emails.
+-  ``new`` Clear Batch Temp Folder button. It’s possible to delete all
+   left-over files from the batches temporary folder in one click now.
+-  ``new`` Added documentation and a warning when setting up a Gmail
+   account for emails. Some extra setps are needed to use a Gmail
+   account from R+ due to Google’s security measures.
+-  ``improved`` Email notifications don’t set a fake sender in the
+   headers anymore. This prevents Gmail from rejecting emails.
+-  ``improved`` Duplicated render jobs now come up below the original
+   job and are automatically selected.
+-  ``improved`` Render Layers Quick Batch now includes the scene name in
+   the render job’s name
+-  ``changed`` Scenes Quick Batch doesn’t fill the renderlayer input
+   anymore. This way it will render all layers by default. The old
+   behaviour can be replicated using the Renderlayers Quick Batch.
+-  ``fixed`` Fix a bug when starting batches with a terminal on Windows
+
+.. _section-3:
+
+1.2
+---
+
+-  ``fixed`` Fix another bug when starting batches on Windows
+-  ``fixed`` Fix bug in batches on Windows when using a terminal
+-  ``fixed`` Fix bug in GPU detection while registering
+
+.. _section-4:
+
+1.1
+---
+
+-  ``fixed`` Fix bug when starting batches on Windows
+-  ``fixed`` Fix bug when cancelling batches on Windows
+
+.. _section-5:
+
+1.0
+---
+
+-  ``new`` Change output mode. A way to change outputs for all render
+   jobs automatically.
+-  ``new`` Large Renders. Split a huge render into multiple render jobs.
+-  ``new`` Color Looks. Create a job for each look in the color
+   management panel.
+-  ``new`` Quick batch: option to create one job per scene.
+-  ``new`` Batch Log mode. Access stats of the previous batch.
+-  ``new`` Show output folder button. Opens the folder where rendered
+   images will be saved.
+-  ``new`` Jobs can now use a specific GPU (in setups with multiple
+   GPUs) or CPU
+-  ``new`` Jobs can use a specific number of samples (Cycles only)
+-  ``new`` Section render. A job can render out only a portion of the
+   image.
+-  ``new`` CSS style sheets for RSS feeds. Includes support for custom
+   CSS files.
+-  ``new`` Automatically create directories for batches
+-  ``new`` Open batches inside terminals
+-  ``new`` Use custom blender binary for batches
+-  ``new`` Custom overrides can now be disabled
+-  ``new`` Custom overrides can have names
+-  ``new`` Render jobs can now have specific worlds (set in the scene
+   tab)
+-  ``new`` Batches can now follow notifications, power off and pre/post
+   actions
+-  ``new`` OpenGL renders now have settings: transparent, render from
+   viewport and percentage
+-  ``improved`` Autogenerate is now Quick Batch, much better ui
+-  ``improved`` Markers in quick batch are now properly sorted by their
+   frame
+-  ``improved`` You can choose to create animations jobs in when using
+   markers in quick batches
+-  ``improved`` You can choose not to set cameras automatically when
+   using markers in quick batches
+-  ``improved`` Render jobs now autocomplete scene details when created
+-  ``improved`` Render jobs now autocomplete output paths when created
+-  ``improved`` Render jobs now autocomplete when a different scene is
+   selected
+-  ``improved`` Any Render job can be made external now (through the
+   external checkbox)
+-  ``improved`` Better ui for custom overrides
+-  ``improved`` Better ui for the initial state of the batch
+-  ``improved`` Better ui for global settings
+-  ``improved`` Batches no longer complain about output paths. They just
+   add a ’_1’ to the duplicated filename.
+-  ``improved`` Better ui in Render tab in batches
+-  ``improved`` Render jobs are now named after the current scene when
+   created
+-  ``improved`` Duplicated names in the render jobs list are handled
+   much better
+-  ``improved`` Better error handling in the support log
+-  ``deprecated`` Background renders (you can use a 1 render job batch
+   now)
+-  ``deprecated`` dBus option for Power off in Linux (almost everyone is
+   using systemd now)
+
+.. _section-6:
+
+0.8
+---
+
+-  Major code refactor. All the code is now organized into modules, code
+   duplication has been reduced and error handling is more robust in
+   general.
+-  Email Notifications. Send an email to notify when a render is
+   complete. Requires an email account to send.
+-  Export Stats to CSV. Save stats data as a CSV file for graphs,
+   databases, etc.
+-  Much improved documentation for users and developers
+-  New samples for post/pre actions in docs
+-  Clone override button. Custom Overrides can be quickly copied to all
+   render jobs with one click.
+-  Most of the code is now unit tested.
+-  Colored output in terminal (only Linux)
+-  Render jobs using external blends no longer require an output path.
+   You can leave it blank to make R+ use the output set in the external
+   blend.
+-  Generate support log setting. Enabling this feature will write a
+   detailed log file while using R+, useful to help solve issues/bugs.
+
+.. _section-7:
+
+0.7
+---
+
+-  New batch rendering implementation. No longer freezes the UI!
+-  Batches run independently of Blender now. You can close, or open
+   another file while the batch is running. It will continue even if
+   Blender crashes.
+-  The list updates as the batch process each job (whether it’s finished
+   or failed)
+-  Use all scene layers feature has been disabled for now. Something
+   changed in recent releases that has made it stop working and I
+   haven’t been able to fix it yet.
+-  Batches can now be cancelled. Any running jobs will be immediately
+   terminated.
+-  Refresh interval for the batch panel can be set in the addon
+   preferences
+-  Support for external blend files in batch. Scene/camera/render layers
+   don’t autocomplete though (API limitations).
+-  Enable/Disable all options to quickly toggle batch render jobs
+-  Render jobs can now be renamed by double clicking on their name in
+   the list
+-  You can also toggle between animation and still renders by clicking
+   the icon in the list
+-  Option to ignore Render Border setting in batch
+-  Option to write log files for each render job
+-  Global size setting for batches. This size will override any size you
+   have set for render jobs, as well as the size you have set in the
+   output panel. Useful to make quick previews.
+-  All messages printed to the console now have timestamps
+-  Log files for background jobs and batches include timestamps. Batches
+   include the render job number and batch name.
+-  Size percentage (from the output panel) is now ignored in batch to
+   avoid user mistakes. If you need to change the size for all jobs you
+   can use the new global size setting.
+-  RSS file support. Render+ can now generate an RSS file for each
+   batch, so you can monitor it’s progress. If you put this file in a
+   network or Dropbox folder, you can monitor the batch using your
+   tablet/phone/TV/browser/etc. See the docs for more info.
+-  Render jobs can have specific file formats. (format specific options
+   not available yet though)
+-  Render jobs can use a specific number of threads (use 0 for
+   automatic)
+-  Custom overrides for render jobs.
+-  Render+ will now check for conflicting or invalid output paths in the
+   batch list
+-  Animation jobs can now render specific Render Layers
+-  The “Cycle slots” toggle has been replaced by the Slots menu. Cycle
+   slots never worked quite well because of API issues and it wasn’t
+   very useful. The new slots menu allows you to change slots from the
+   render panel, as well as name them. Used slots have a fully visible
+   icon, free slots have a more transparent one.
+-  Render jobs must have different names now. This was preferred before,
+   but now it’s enforced due to the possibility of bugs and data
+   conflicts.
+-  Render+ will warn about invalid scenes, cameras or combinations of
+   both. Previous behaviour was using the default scene/camera but this
+   was frustrating (specially in long batches :) )
+
+.. _section-8:
+
+0.6
+---
+
+-  Improved UI
+-  Autosave now honors overwrite option
+-  Autogenerate jobs for batch rendering
+-  Sound notifications
+-  The animation settings toggle is gone!
+-  Options to send to bottom/top, duplicate, and clear all in Batch
+-  Batch panel can be disabled in preferences
+-  New Stats: Estimated time, average/fastest/slowest frame rendertimes
+
+.. _section-9:
+
+0.5
+---
+
+-  Batch rendering
+-  Change slot after rendering

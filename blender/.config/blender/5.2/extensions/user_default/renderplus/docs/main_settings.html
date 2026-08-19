@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Settings &mdash; Render+ 2.6.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/custom_renderplus.css?v=7c6f6b38" />
+
+  
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=3db9c557"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stats" href="stats.html" />
+    <link rel="prev" title="Preferences" href="preferences.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Render+
+              <img src="_static/logo_sidebar.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preferences.html">Preferences</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch Renders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_batch.html">Quick Batch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Batch Server API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Render+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">General Settings</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/main_settings.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="general-settings">
+<h1>General Settings<a class="headerlink" href="#general-settings" title="Link to this heading"></a></h1>
+<img alt="_images/main_settings.png" src="_images/main_settings.png" />
+<section id="auto-save-images">
+<h2>Auto save Images<a class="headerlink" href="#auto-save-images" title="Link to this heading"></a></h2>
+<p>Let’s you save image renders automatically. It will use whatever
+settings you have set in the output panel in render settings.</p>
+<p>This setting will also affect OpenGL renders when you render a still
+image. OpenGL Animations will always be auto-saved.</p>
+<p>If the overwrite option is disabled new files will include a numbered
+suffix (“<em>#1“,”</em>#2”, etc.)</p>
+</section>
+<section id="autohide-objects">
+<h2>Autohide Objects<a class="headerlink" href="#autohide-objects" title="Link to this heading"></a></h2>
+<p>Objects in Blender can be hidden in the viewport and the final render
+independently. Sometimes this can be problematic: you hide something
+from the viewport and forget about it only to see it pop up in the
+middle of the final render.</p>
+<p>The autohide setting hides objects in the render automatically if you
+have hidden them in the viewport. It will also hide objects in the
+viewport if you hid them from rendering.</p>
+</section>
+<section id="power-off">
+<h2>Power Off<a class="headerlink" href="#power-off" title="Link to this heading"></a></h2>
+<img alt="_images/poweroff.png" src="_images/poweroff.png" />
+<p>The power off options allow you to automatically shutdown or suspend
+(set to sleep) your computer when rendering finishes.</p>
+<p>Windows will use Hibernation (or Hybrid Sleep) instead of regular sleep
+by default. If you want to use sleep you’ll have to turn hibernate off
+manually. <a class="reference external" href="http://maximumpcguides.com/windows-7/turn-off-hybrid-sleep-in-windows-7/">Follow this guide to disable Hybrid Sleep in Windows
+7.</a></p>
+<hr class="docutils" />
+<blockquote>
+<div><p>This option is reset every time you open a blend file or render with
+it enabled, so you don’t accidentally turn off your PC.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="notifications">
+<h2>Notifications<a class="headerlink" href="#notifications" title="Link to this heading"></a></h2>
+<img alt="_images/notifications.png" src="_images/notifications.png" />
+<section id="desktop-notifications">
+<h3>Desktop Notifications<a class="headerlink" href="#desktop-notifications" title="Link to this heading"></a></h3>
+<p>Displays a popup message in your desktop when rendering is finished.
+Desktop notifications currently work only on Linux and OS X Mavericks
+(or newer).</p>
+</section>
+<section id="sound-notifications">
+<h3>Sound Notifications<a class="headerlink" href="#sound-notifications" title="Link to this heading"></a></h3>
+<p>Plays a sound once rendering is complete. You can set the file and
+volume in the addon <a class="reference external" href="preferences.md">Preferences</a></p>
+</section>
+<section id="email-notifications">
+<h3>Email Notifications<a class="headerlink" href="#email-notifications" title="Link to this heading"></a></h3>
+<p>Sends an email once rendering is finished. The email contains the name
+of the blend file, as well as total rendertime. If you rendered an
+animation, you will also get animation stats too (average and
+slowest/fastest frame).</p>
+<p>The email SMTP server must be configured before you can use it. Head
+over to the addon <a class="reference external" href="preferences.md">Preferences</a> section for more
+information.</p>
+</section>
+</section>
+<section id="pre-and-post-render-actions">
+<h2>Pre and Post render actions<a class="headerlink" href="#pre-and-post-render-actions" title="Link to this heading"></a></h2>
+<img alt="_images/actions.png" src="_images/actions.png" />
+<p>Pre and post render actions are an advanced feature that runs arbitrary
+commands or python scripts before the render starts or after it
+finishes. They can be used to execute any command, like sending
+messages, uploading files via FTP, copying them to another folder, and
+more.</p>
+<p>Click the check boxes to enable them. Once enabled a box with settings
+will unfold. Use the <code class="docutils literal notranslate"><span class="pre">option</span></code> dropdown to select whether to run a
+shell command or a script.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Command</span></code> can be any command that you can run in a terminal or console
+(or the prompt in Windows). Aliases like ‘~’ (in Linux/Mac OS X) are
+available. Note that you need to use absolute paths in your commands
+(eg. <em>“c:user/me”</em>, <em>“/home/me/”</em>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Script</span></code> will run any Python script in your Blender file. You can
+write it the text editor or load it from an external file. Errors and
+tracebacks will be printed to the terminal.</p>
+<p>Render+ actions will run anything you give them. Please be careful,
+specially when deleting files.</p>
+<blockquote>
+<div><p>Pre/Post Actions are disabled every time a blend file is opened for
+security reasons. Don’t forget to check and re-enable them!</p>
+</div></blockquote>
+<section id="code-samples">
+<h3>Code Samples<a class="headerlink" href="#code-samples" title="Link to this heading"></a></h3>
+<p>Here’s some code samples to give you an idea of what can be done with
+pre/post actions. Copy these scripts inside a new text in the text
+editor, then set them up in the Render+ Settings panel.</p>
+<section id="copy-rendered-image-to-dropbox-folder">
+<h4>Copy Rendered image to Dropbox folder<a class="headerlink" href="#copy-rendered-image-to-dropbox-folder" title="Link to this heading"></a></h4>
+<p>This script makes a copy of your Render in a Dropbox (or any other)
+folder. Run it as a post render action.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">bpy</span>
+
+<span class="n">rendered</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
+<span class="n">dropbox</span>  <span class="o">=</span> <span class="s1">&#39;/path/to/your/dropbox&#39;</span>
+
+<span class="k">try</span><span class="p">:</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">rendered</span><span class="p">,</span> <span class="n">dropbox</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not allowed to copy&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File not found!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="clean-folder-before-rendering">
+<h4>Clean folder before rendering<a class="headerlink" href="#clean-folder-before-rendering" title="Link to this heading"></a></h4>
+<p>This script removes every file inside the output folder. Double-check
+your output path and make sure the blend file is not inside the same
+folder. Run it as a pre-render action.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">bpy</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">filepath</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not allowed to delete &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="k">continue</span>
+</pre></div>
+</div>
+</section>
+<section id="zip-and-mail">
+<h4>Zip and mail<a class="headerlink" href="#zip-and-mail" title="Link to this heading"></a></h4>
+<p>This script lets you zip the rendered file(s) and send them in an email.
+Watch out for file sizes. Run this as a post-render action.</p>
+<p><strong>Linux/Mac OS X</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
+
+<span class="c1"># Settings --------------------------------------------------------------------------</span>
+
+<span class="c1"># Change the settings to point to your files, mail address, etc.</span>
+<span class="c1"># You need to have sendmail installed and configured to send the email.</span>
+
+<span class="n">files_to_zip</span>     <span class="o">=</span> <span class="s1">&#39;/home/[USER]/my_project/render&#39;</span>
+<span class="n">zip_to</span>       <span class="o">=</span> <span class="s1">&#39;/home/[USER]/something/file.zip&#39;</span>
+<span class="n">mail_address</span>     <span class="o">=</span> <span class="s1">&#39;my_mail@example.com&#39;</span>
+<span class="n">mail_subject</span>     <span class="o">=</span> <span class="s1">&#39;Your Render is done!&#39;</span>
+
+<span class="n">call</span><span class="p">(</span><span class="s2">&quot;zip -r &quot;</span> <span class="o">+</span> <span class="n">zip_to</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">files_to_zip</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">rendertime</span> <span class="o">=</span> <span class="s1">&#39;echo &quot;Rendertime: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">renderplus</span><span class="o">.</span><span class="n">renderTime</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span>
+<span class="n">call</span><span class="p">(</span><span class="n">rendertime</span> <span class="o">+</span> <span class="s1">&#39; | mail -s &quot;&#39;</span> <span class="o">+</span> <span class="n">mail_subject</span> <span class="o">+</span> <span class="s1">&#39;&quot; &#39;</span> <span class="o">+</span> <span class="n">mail_address</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Windows</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+<span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+
+
+<span class="c1"># Settings --------------------------------------------------------------------------</span>
+
+<span class="c1"># Change the settings to point to your files, mail address, etc.</span>
+
+<span class="n">files_to_zip</span>     <span class="o">=</span> <span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">me</span><span class="se">\\</span><span class="s1">blenderProject&#39;</span>
+<span class="n">zip_to</span>       <span class="o">=</span> <span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">me</span><span class="se">\\</span><span class="s1">/something/file.zip&#39;</span>
+<span class="n">smtp_server</span>      <span class="o">=</span> <span class="s1">&#39;smtp.yourserver.com&#39;</span>
+
+<span class="n">rendertime</span>       <span class="o">=</span> <span class="s1">&#39;Rendertime: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">renderplus</span><span class="o">.</span><span class="n">renderTime</span><span class="p">)</span>
+<span class="n">mail</span>         <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">rendertime</span><span class="p">)</span>
+<span class="n">mail</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="s1">&#39;my_mail@example.com&#39;</span>
+<span class="n">mail</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;Your Render is done!&#39;</span>
+
+
+<span class="c1"># Note that you need to have 7zip installed for the zipping command</span>
+
+<span class="n">call</span><span class="p">(</span><span class="s2">&quot;7z.exe a -r &quot;</span> <span class="o">+</span> <span class="n">zip_to</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">files_to_zip</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># To learn more about sending mails with Python check</span>
+<span class="c1"># https://docs.python.org/3.4/library/email-examples.html</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="n">smtp_server</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="s1">&#39;me@blender.org&#39;</span><span class="p">,</span> <span class="n">mail</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">mail</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+<span class="n">s</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="preferences.html" class="btn btn-neutral float-left" title="Preferences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stats.html" class="btn btn-neutral float-right" title="Stats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016 and onwards, Diego Gangl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

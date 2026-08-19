@@ -1,0 +1,12 @@
+[main]
+port = 7777
+cleanup = true
+log_path = "./renderplus.log"
+disable_workers = false
+blender = "blender"
+
+# Add one of these for each rendering server
+# [workers.station1]
+# address = "my_server.render.com"
+# port = 7777
+# poll_interval = 2.0

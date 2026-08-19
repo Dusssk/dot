@@ -1,0 +1,113 @@
+Frequently Asked Questions
+--------------------------
+
+    The Custom Overrides help says data paths need to be relative to ``bpy.context.scene``. What does that mean?
+
+Check the section about custom overrides above and the Blender
+documentation about data paths.
+http://www.blender.org/api/blender_python_api_2_72_0/info_api_reference.html
+
+--------------
+
+    The post/pre actions help says I should use absolute paths. What are absolute paths?
+
+Absolute paths are file paths starting from the root of the filesystem.
+From ``"C:\"`` in Windows, or ``"/"`` in OS X/Linux. For instance:
+``"/home/user/documents/render/image.png"``
+
+--------------
+
+    What does “overrides” mean (for batch renders)?
+
+Overrides are properties (like render dimensions, or the scene) that can
+be modified in a render job.
+
+--------------
+
+    Some of my render jobs fail with a “Permission Denied” error. What’s the issue?
+
+Check the output path for your render jobs. Make sure you have write
+permissions on that folder.
+
+--------------
+
+    My renders are coming out blank/wrong in batch!
+
+Do you have more than one render layer? In that case you need to select
+a specific render layer in the batch panel. Otherwise the last layer to
+get rendered will overwrite the rest.
+
+--------------
+
+    When I select a format override in batch I get a message about that format not being available in my system.
+
+This happens when you select a format that may or may not be compiled
+into Blender. Render+ can’t determine which formats were included in
+your Blender version (API limitation). Available formats can vary
+between Operating Systems and versions of Blender (official, custom,
+branch from GraphicAll, etc).
+
+If you’re unsure about a format being available, try a small render
+using the size override to check it out.
+
+--------------
+
+    Is there any way to change the path of an output node for each job?
+
+This question applies to having a File Output node in your compositor
+nodes. You can change the path set for it for each individual render job
+by setting it in Custom Overrides. Jump to the Custom Overrides tab and
+add a new override. Use the following data path:
+``node_tree.nodes[NODE_NAME].base_path``. Replace NODE_NAME with the
+name of the node you want to modify. Set the “Data” field to the path
+you want for that job.
+
+--------------
+
+    How do I start the batch server manually?
+
+Head over to Renderplus' addon folder and you will find three files
+called "start_server_[OS]". Double click the one that corresponds
+to your operating system and the batch server will start running
+
+--------------
+
+    I'm getting an error about network permissions when trying to render
+
+Blender 4.2 introduced online access permissions. This akin to mobile
+apps requesting permissions for different resources.
+
+Since Render+ can render over a network, it needs permission to use network
+functionality. You can enable this in `preferences > system > network`
+
+Here is the relevant page in Blender's documentation:
+https://docs.blender.org/manual/en/latest/editors/preferences/system.html#network
+
+--------------
+
+    I have setup the batch server over a network correctly, but the batches are not starting
+
+If you have set the batch server over a network and confirmed that R+
+can talk to the server but batch are not starting or finishing before
+starting, check the addon preferences. Make sure the blender executable
+is set.
+
+When Render+ runs locally it fills in the Blender executable from the one
+running the addon. However there's no way to do this in a server on another
+computer, so we need to set a Blender executable beforehand.
+
+--------------
+
+    How do I connect to the batch server over a network?
+
+When you start the batch server it will try to find out that machine's
+ip address in the network. In the client computer, open Render+'s
+preferences and in the batch tab select the "network" option.
+Paste your server machine's ip address in the server address field.
+Don't forget to check the port field as well.
+
+You can check if Render+ can reach the server with the "Test Server
+Connection" button.
+
+If the batch server couldn't figure out your network ip, you can
+look for it manually in your system's settings.

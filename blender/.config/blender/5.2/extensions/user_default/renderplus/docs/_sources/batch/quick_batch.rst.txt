@@ -1,0 +1,107 @@
+Quick Batch
+===========
+
+.. image:: ../_static/screens/batch_quick.png
+
+The Quick Batch mode lets you create render jobs
+based on combinations of differet properties in the blend file.
+
+The UI is divided into several sections, each having a checkbox
+to include or exclude it from the process. Each section also has its own UI.
+
+Render+ will generate render jobs based on the combination of these sections.
+For instance, if you enable three scenes and two cameras Render+ will create 6
+render jobs: One for each scene with camera 1, and one for each scene with
+camera 2.
+
+You can make render jobs animations by toggling the ``Set as Animation``
+checkbox. No matter what option you choose, *Custom frame range* and the
+*Still frame* settings will always be set to the marker.
+
+At the end of the list you can also find find the ``name`` and ``output``
+fields. These let you setup the name and output path for each render job.
+You can use placeholders for these inputs that will get replaced with
+information from each render job.
+
+Here's the list of placeholders:
+
+- ``{scene}``
+- ``{camera}``
+- ``{world}``
+- ``{layer}``
+- ``{marker}``
+- ``{tile_x}``
+- ``{tile_y}``
+
+Scenes
+------
+
+Creates a render job for each scene in the blend file. This section
+can't be disabled as you need to have at least one scene for the render jobs.
+
+You can add as many scenes as you like using the add button, or use the "Use All
+Scenes" toggle to include all scenes.
+
+
+Cameras
+-------
+
+Creates an render job for each camera. Like scenes, you can have as many cameras
+as you'd like or toggle the "Use All" checkbox.
+
+
+World
+-------
+
+Creates an render job for each world. Like scenes, you can have as many worlds
+as you'd like or toggle the "Use All" checkbox.
+
+
+View Layers
+-----------
+
+Creates a render job for each view layer. Only view layers that are
+enabled are used.
+
+
+Markers
+-------
+
+Use markers to create render jobs with specific frame ranges.
+
+This batch will create a job for each marker with a custom frame range
+that starts from the previous marker (or the beggining of the
+animation), up to the next marker (or the end of the animation). If you
+don’t use animations it will simply be a still frame for each marker.
+
+
+Large Render
+------------
+
+.. image:: ../_static/screens/batch_large_render.png
+
+Divides the image in smaller tiles, creating a render job for each tile.
+
+This batch uses the ``section`` setting of the ``Render`` tab to render
+only a portion of the image. This way you can subdivide a large image
+into smaller and more manageable images that can be rendered
+individually.
+
+You can stitch the images together using a image editor like
+`Krita <http://www.krita.org>`__, `GIMP <http://www.gimp.org%3E>`__ or
+Adobe Photoshop. If you use the “Open as layers” option in GIMP the
+image will come together automatically.
+
+You can divide a render to up to 10 tiles horizontally and vertically.
+For instance, this means a 19,200x10,080px image would be rendered in
+100 render jobs of 1920x1080 px.
+
++-----------------------------------+-----------------------------------+
+| Setting                           | Description                       |
++===================================+===================================+
+| Horizontal Tiles                  | Number of horizontal (x axis)     |
+|                                   | divisions                         |
++-----------------------------------+-----------------------------------+
+| Vertical Tiles                    | Number of vertical (y axis)       |
+|                                   | divisions                         |
++-----------------------------------+-----------------------------------+

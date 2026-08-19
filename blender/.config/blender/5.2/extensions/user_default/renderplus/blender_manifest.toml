@@ -1,0 +1,34 @@
+schema_version = "1.0.0"
+
+id = "renderplus"
+version = "3.0.2"
+name = "Render+"
+tagline = "Rendering and batch rendering toolset"
+maintainer = "Diego Gangl <diego@sinestesia.co>"
+type = "add-on"
+website = "https://sinestesia.co/docs/renderplus"
+tags = ["Render"]
+
+blender_version_min = "5.0.1"
+
+# License conforming to https://spdx.org/licenses/ (use "SPDX: prefix)
+# https://docs.blender.org/manual/en/dev/advanced/extensions/licenses.html
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+
+[permissions]
+files = "Needed to save, pack and upload files to the batch server"
+network = "Needed to run Batches on localhost or over the network"
+
+
+# Optional: build settings.
+# https://docs.blender.org/manual/en/dev/advanced/extensions/command_line_arguments.html#command-line-args-extension-build
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  "/releases",
+  "/.git/",
+  "/*.zip",
+]

@@ -1,0 +1,122 @@
+{
+    "version": "2.0",
+    "name": "some_blend.blend",
+    "settings": {
+        "rss": {
+            "enabled": true,
+            "path": "some_path.rss"
+        },
+
+        "global_percentage": {
+            "enabled": false,
+            "value": 50
+        },
+
+        "global_size": {
+            "enabled": false,
+            "value": [1920, 1080]
+        },
+
+        "ignore_border": true
+    },
+
+    "blender_bin": "/usr/bin/blender",
+
+    "poweroff": {
+        "enabled": true,
+        "action": "SLEEP"
+    },
+
+    "hooks": {
+        "PRE_BATCH": [
+            {"enabled": true, "cmd": "echo 'Prebatch hook'"}
+        ],
+
+        "POST_BATCH": [
+            {"enabled": true, "cmd": "echo 'Postbatch hook'"},
+            {"enabled": true, "cmd": "echo 'Postbatch hook 2'"}
+        ]
+    },
+
+    "jobs": [
+        {
+            "enabled": false,
+            "name": "some_job",
+            "scene": "my_scene",
+            "blend_file": "my_blend.blend",
+            "world": "my_world",
+            "layer": "my_layer",
+            "camera": "my_camera",
+            "output": "my_output",
+            "frame_still": "120",
+            "frame_start": "1",
+            "frame_end": "200",
+            "animated": false,
+            "format": "PNG",
+            "threads": 0,
+            "size": [1920, 1080],
+            "section": {
+                "enabled": true,
+                "x": 0,
+                "y": 0,
+                "width": 1000,
+                "height": 2000
+            },
+            "custom_overrides": [
+                {
+                    "enabled": true,
+                    "path": "my.path",
+                    "data": "my.data"
+                },
+
+                {
+                    "enabled": false,
+                    "path": "my.path2",
+                    "data": "my.data2"
+                }
+            ],
+            "cycles": {
+                "samples": 1000,
+                "device": "CPU"
+            }
+        },
+        {
+            "enabled": true,
+            "name": "some_job2",
+            "scene": "my_scene2",
+            "blend_file": "my_blend.blend",
+            "world": "my_world",
+            "layer": "my_layer",
+            "camera": "my_camera",
+            "output": "my_output",
+            "frame_still": "120",
+            "frame_start": "1",
+            "frame_end": "200",
+            "animated": false,
+            "format": "PNG",
+            "threads": 0,
+            "size": [1920, 1080],
+            "section": {
+                "enabled": true,
+                "x": 0,
+                "y": 0,
+                "width": 1000,
+                "height": 2000
+            },
+            "hooks": {
+                "PRE_JOB": [
+                    {"enabled": true, "cmd": "echo 'Prejob hook'"}
+                ],
+
+                "POST_JOB": [
+                    {"enabled": true, "cmd": "echo 'Postjob hook'"}
+                ]
+            },
+            "custom_overrides": [],
+            "cycles": {
+                "samples": 1001,
+                "device": "CPU"
+            }
+        }
+    ]
+}

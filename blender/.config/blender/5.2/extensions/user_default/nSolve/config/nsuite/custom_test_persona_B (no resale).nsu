@@ -1,0 +1,774 @@
+[
+    {
+        "name": "default",
+        "location": [
+            29.511838912963867,
+            22.60045623779297
+        ],
+        "scale": 48,
+        "space": 2.5,
+        "flip": true,
+        "list_items": [
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "hard_loop_cut",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "loop_cut",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "hard_edge_slide",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "offset_edges",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "bevel",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "mesh_cut",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "project_line",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "project_loop",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "project_circle",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "project_grid",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "select_smartloop",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "analyze",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "custom",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "mesh.vertices_smooth",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "custom",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "mesh.delta_quad_operator",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "custom",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "view3d.clean_mesh",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "nsuite",
+                "nsuite_operator": "analyze",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "script",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "add.png",
+                "operator_properties": [],
+                "script": "bpy.context.space_data.overlay.show_face_orientation = not bpy.context.space_data.overlay.show_face_orientation",
+                "script_description": "Face Orientation"
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            },
+            {
+                "operator": "none",
+                "nsuite_operator": "none",
+                "tool_operator": "",
+                "custom_operator": "",
+                "custom_icon": "custom.png",
+                "operator_properties": [],
+                "script": "",
+                "script_description": ""
+            }
+        ]
+    }
+]

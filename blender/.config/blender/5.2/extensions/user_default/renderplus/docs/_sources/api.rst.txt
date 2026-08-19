@@ -1,0 +1,421 @@
+Batch Server API
+================
+
+Render+’s batch server uses a REST API to start, cancel or poll batches.
+
+Routes
+------
+
++---------------------+--------+-------------------------------------------+
+| Route               | Method | Description                               |
++=====================+========+===========================================+
+| /batch/recipe       | POST   | Submit a batch recipe                     |
++---------------------+--------+-------------------------------------------+
+| /batch/file         | POST   | Upload a blendfile                        |
++---------------------+--------+-------------------------------------------+
+| /batch/start        | GET    | Start the batch                           |
++---------------------+--------+-------------------------------------------+
+| /test               | GET    | Get batch server information              |
++---------------------+--------+-------------------------------------------+
+| /batch              | GET    | Query the batch status                    |
++---------------------+--------+-------------------------------------------+
+| /batch/ready        | GET    | Determine if the server can run a batch   |
++---------------------+--------+-------------------------------------------+
+| /batch              | DELETE | Cancel the current batch                  |
++---------------------+--------+-------------------------------------------+
+| /batch/name         | GET    | Query the batch’s name (blend file)       |
++---------------------+--------+-------------------------------------------+
+| /batch/jobs/{id}    | GET    | Query the status of a specific render job |
++---------------------+--------+-------------------------------------------+
+| /batch/jobs/current | DELETE | Cancel the render job currently running   |
++---------------------+--------+-------------------------------------------+
+
+
+Manually starting the server
+----------------------------
+
+The server can be started using the command line by going to the addon
+folder and running:
+
+::
+
+    python3 server
+
+The server has several parameters that can be used. You can get a list
+of them with the ``--help`` or ``-h`` parameters.
+
+::
+
+  usage: server [-h] [--recipe RECIPE] [--dry] [--check] [--serve] [--port >1024] [--poll]
+                [--list-gpus LIST_GPUS] [--poll-job POLL_JOB] [--cancel] [--cancel-job]
+                [--stop] [--print-stats] [--no-cleanup] [--write-log] [--print-debug]
+                [--version]
+
+  Render+ Batch rendering server.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --recipe RECIPE       A JSON file containing a batch list.
+    --dry                 Dry Run (only print stats and commands).
+    --check               Check if commands and files are OK.
+    --serve               Start the server.
+    --port (>1024)        Change port to use when running server. Default is 7777
+    --poll                Poll a running batch.
+    --list-gpus LIST_GPUS
+                          List available GPUs (needs a Blender binary file)
+    --poll-job POLL_JOB   Poll a specific render job
+    --cancel              Cancel the running batch.
+    --cancel-job          Cancel the current render job.
+    --stop                Stop the server.
+    --print-stats         Print batch stats after finishing.
+    --no-cleanup          Don't clean up temp folder after running.
+    --write-log           Write a log in the logs folder.
+    --print-debug         Print debug logs
+    --version             show program's version number and exit
+
+
+Starting a Batch
+----------------
+
+Before starting a batch we need to submit a **recipe**. This can be done
+by sending a ``POST`` request to ``http://localhost:[PORT]/batch/recipe``.
+
+
+The data sent to start a batch is called a **recipe** and is a
+dictionary with a specific set of keys. Check out the sample below. You
+can see how Render+ generates these by looking at the contents of the
+recipe module. Look for the ``recipe.py`` file inside the batch folder.
+
+The data should be a JSON dictionary, and ``Content-type`` should be set to
+``application/json``.
+
+
+Recipe sample
+~~~~~~~~~~~~~
+
+Here’s a sample of a Batch recipe with 1 render job. Note that ``jobs``
+is a list of dictionaries.
+
+.. code:: json
+
+    {
+      "name": "/home/user/batch.blend",
+      "version": 2.2,
+      "settings": {
+        "rss": {
+          "enabled": false,
+          "path": "/home/user/feed.rss"
+        },
+        "global_percentage": {
+          "enabled": false,
+          "value": 100
+        },
+        "global_size": {
+          "enabled": false,
+          "value": [1920, 1080]
+        },
+        "write_log": false,
+        "ignore_border": false
+      },
+      "blender_bin": "/bin/blender",
+      "hooks": {
+        "PRE_BATCH": [],
+        "POST_BATCH": []
+      },
+      "poweroff": {
+        "enabled": false,
+        "action": "DISABLED"
+      },
+      "notifications": {
+        "desktop": false,
+        "sound": {
+          "enabled": false,
+          "file": "/home/user/.config/blender/2.80/scripts/addons/renderplus/assets/notification.ogg",
+          "volume": 10
+        },
+        "mail": {
+          "enabled": false,
+          "user": "some@somemail.com",
+          "pass": "password",
+          "ssl": true,
+          "to": "my@real-mail.com",
+          "server": "smtp.mail.com"
+        }
+      },
+      "jobs": [
+        {
+          "enabled": true,
+          "id": 0,
+          "name": "Some job",
+          "output": "/home/user/render_Untitled_Scene",
+          "external": false,
+          "layer": "",
+          "blendfile": "blendname.blend",
+          "filename": "/home/user/blendname.blend",
+          "animated": false,
+          "engine": "BLENDER_EEVEE",
+          "threads": 0,
+          "hooks": {
+            "PRE_JOB": [
+              {
+                "enabled": false,
+                "cmd": "echo 'pre_job'"
+              }
+            ],
+            "POST_JOB": [
+              {
+                "enabled": false,
+                "cmd": "echo 'post_job'"
+              }
+            ]
+          },
+          "size": [1920, 1080],
+          "blend_file": "/home/user/batch.blend",
+          "scene": "Scene",
+          "camera": "Camera",
+          "world": "World",
+          "frame_still": 1,
+          "frame_start": 1,
+          "frame_end": 250,
+          "format": "PNG",
+          "section": {
+            "enabled": false,
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "cycles": {
+            "samples": 0,
+            "device": "DEFAULT"
+          },
+          "custom_overrides": []
+        },
+      ]
+    }
+
+
+Polling
+-------
+
+To poll the batch’s status send a ``GET`` request to
+``http://localhost:[PORT]/batch``. The response will have a HTTP status
+code of 200 and contain a JSON dictionary. You can also request data for
+a single job only using ``http://localhost:[PORT]/batch/jobs/[ID]``.
+Where ID is the number of the job in the list, starting from zero.
+
+The batch’s name is available by requesting
+``http://localhost:[PORT]/batch/name``.
+
+Poll Response example
+~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: json
+
+    {
+      "status" : "RUNNING",
+      "times" : {
+        "started" : 1545401461.3625693,
+        "finished" : null,
+        "rendertime" : null
+      },
+      "stats" : {
+        "slowest_index" : null,
+        "slowest_time" : null,
+        "fastest_index" : null,
+        "fastest_time" : null,
+        "average_time" : null
+      },
+      "messages" : [],
+      "jobs" : [
+        {
+          "id" : 0,
+          "status" : "RUNNING",
+          "times" : {
+            "started" : 1545401461.3666012,
+            "finished" : null,
+            "rendertime" : null
+          },
+          "messages" : [],
+          "progress" : 9.765625,
+          "engine" : {
+            "type" : "BLENDER_EEVEE",
+            "data" : {
+              "frame" : "1",
+              "mem" : "127.56M",
+              "elapsed" : "00:00.42",
+              "samples_done" : "25",
+              "samples_todo" : "256"
+            }
+          }
+        },
+        {
+          "id" : 1,
+          "status" : "DISABLED",
+          "times" : {
+            "started" : null,
+            "finished" : null,
+            "rendertime" : null
+          },
+          "messages" : [],
+          "progress" : 0,
+          "engine" : {
+            "type" : null,
+            "data" : null
+          }
+        },
+        {
+          "id" : 2,
+          "status" : "QUEUED",
+          "times" : {
+            "started" : null,
+            "finished" : null,
+            "rendertime" : null
+          },
+          "messages" : [],
+          "progress" : 0,
+          "engine" : {
+            "type" : null,
+            "data" : null
+          }
+        }
+      ],
+      "current_job" : 0
+    }
+
+Fields
+~~~~~~
+
+-  **status**: Can be either ``WAITING``, ``RUNNING``, ``FINISHED`` or,
+   ``CANCELLED``. If a batch has been run the status will be either
+   ``FINISHED`` or ``CANCELLED``. If no batch has been run the status
+   will be ``WAITING``.
+-  **current_job**: ID of the renderjob currently being rendered
+-  **messages**: Usually empty. Sometimes used for error messages.
+-  **times**: Start, finish and render times for the whole batch.
+   Finished and rendertime will be null while the batch is running.
+-  **stats**: Contains average rendertime, as well as fastest and
+   slowest jobs. All these will be null while the batch is running or if
+   the batch is cancelled.
+-  **jobs**: A list with the status of each job.
+
+A render job has the following keys:
+
+-  **id**: The ID for the render job
+-  **status**: ``QUEUED``, ``DISABLED``, ``RUNNING``, ``FINISHED`` or
+   ``CANCELLED``
+-  **times**: Start, finish and render times for the job
+-  **messages**: Usually empty. Used for error messages when the job
+   fails
+-  **progress**: An integer in the rage 0…100 representing the progress
+   of the render
+-  **engine**: A dictionary containing two items: *Type* (name of the
+   render engine or ``NON_COMPATIBLE``) and *data* with data pulled from
+   the render engine’s ``stdout``
+
+Note that ``NON_COMPATIBLE`` doesn’t mean it won’t render, but only that
+Render+ doesn’t know how to get information from the engine. The data
+key can have different keys depending on the engine.
+
+Errors
+------
+
+In case of errors the routes will return an error HTTP code and a
+dictionary with more information. Requesting for an invalid route will
+return a 404.
+
++-----------------+-----------------+-----------------+-----------------+
+| Route           | Method          | HTTP Code       | Description     |
++=================+=================+=================+=================+
+| /batch          | POST            | 406             | Wrong           |
+|                 |                 |                 | content-type    |
+|                 |                 |                 | sent (must be   |
+|                 |                 |                 | JSON)           |
++-----------------+-----------------+-----------------+-----------------+
+| /batch          | POST            | 409             | Can’t start     |
+|                 |                 |                 | because a batch |
+|                 |                 |                 | is already      |
+|                 |                 |                 | running         |
++-----------------+-----------------+-----------------+-----------------+
+| /batch          | GET             | 409             | Can’t poll      |
+|                 |                 |                 | because no      |
+|                 |                 |                 | batch has been  |
+|                 |                 |                 | run             |
++-----------------+-----------------+-----------------+-----------------+
+| /batch/jobs/{id | GET             | 409             | Can’t poll      |
+| }               |                 |                 | because no      |
+|                 |                 |                 | batch has been  |
+|                 |                 |                 | run             |
++-----------------+-----------------+-----------------+-----------------+
+| /batch/jobs/{id | GET             | 400             | Wrong or        |
+| }               |                 |                 | missing index   |
+|                 |                 |                 | of job to poll  |
++-----------------+-----------------+-----------------+-----------------+
+| /batch/name     | GET             | 409             | Can’t poll      |
+|                 |                 |                 | because no      |
+|                 |                 |                 | batch has been  |
+|                 |                 |                 | run             |
++-----------------+-----------------+-----------------+-----------------+
+| /batch          | DELETE          | 409             | Can’t cancel    |
+|                 |                 |                 | because no      |
+|                 |                 |                 | batch is        |
+|                 |                 |                 | running         |
++-----------------+-----------------+-----------------+-----------------+
+| /batch/jobs/cur | DELETE          | 409             | Can’t cancel    |
+| rent            |                 |                 | because no      |
+|                 |                 |                 | batch is        |
+|                 |                 |                 | running         |
++-----------------+-----------------+-----------------+-----------------+
+
+Here’s an example of an error response:
+
+.. code:: json
+
+    {
+      "status" : "Not running a batch right now",
+    }
+
+
+When a job fails it doesn’t produce an error message. It’s status is set
+to ``FAILED``.
+
+Logs
+----
+
+Batch server logs are different from the addon’s logs, and they are only
+written if you use the ``--write-logs`` parameter when starting the
+server. They are written to the **server/log** folder. The server writes
+a new log file every time it is started. The filename format is
+``renderplus_[day]-[month]-[year]-[hour]-[minute]-[seconds]``
+
+
+Stopping the server
+-------------------
+
+To stop the server press ``CTRL+C`` while it's running.
+
+.. _listingGPU:
+
+Listing GPUs
+------------
+
+To find a list of GPUs available to Blender in your system and their numbers
+you can pass the ``--list-gpus`` setting to the server.
+
+This parameter needs a path to the Blender binary you want to use for batch
+rendering.
+
+
+::
+
+  ▶ python3 server --list-gpus /usr/bin/Blender
+
+  Blender 2.90.0 (hash 0330d1af29c0 built 2020-08-31 11:54:54)
+  Read prefs: /home/januz/.config/blender/2.90/config/userpref.blend
+  found bundled python: /home/januz/down/blender-2.90.0-linux64/2.90/python
+
+  GPUS AVAILABLE FOR RENDERING
+  --------------------------------------------------------------------------------
+  Radeon RX Vega 56 | Number: 0
+
+  Blender quit

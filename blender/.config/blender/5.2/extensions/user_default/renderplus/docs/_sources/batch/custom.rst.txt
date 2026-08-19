@@ -1,0 +1,100 @@
+.. _custom:
+
+Custom Overrides
+----------------
+
+With custom overrides you can change the value of any property in the
+scene
+
+.. image:: ../_static/screens/batch_override.png
+
+Custom Overrides are used to change specific things for a render job,
+like color management settings, rig properties, enabling/disabling
+lights and more.
+
+Click the ``+`` button to add a custom override and the ``-`` button to
+remove it. Clicking on the name of a Custom Override lets you change it,
+while toggling the checkbox next to them disables/enables them (just
+like in the render jobs list).
+
+Below the new and remove buttons you will find the ``copy`` button.
+Clicking ``Copy`` will **copy the data value to all render jobs**, while
+adding the override to those that don’t have it. You can use this button
+to quickly set an override for the entire batch (for instance, setting a
+custom cycles sampling value).
+
+Custom overrides also support user presets, so you can save useful
+overrides for quick access. Render+ comes with 4 example overrides to get
+you started.
+
+How to use
+==========
+
+When you've created a new override, you need to set a datapath. This
+is the path to where the data is stored in the blend file. Render+
+lets you pick this from a UI or type it manually.
+
+You can select from objects, cameras, lights or collections. Each one
+of these will change the picker next to it, so you can select a specific
+object, camera, etc.
+
+After selecting the target (object, light, etc.) you can pick the property
+that will be overriden. Render+ gives you a dropdown with several common
+properties to choose. For other properties pick the "Custom" option and type
+the name of the property.
+
+Once the property is selected just change the value using the controls below
+the "Custom Data" title. If you picked "Custom" you will have to type that as
+well.
+
+Custom Overrides are implemented by creating custom Python scripts before
+rendering. Click the eye icon to see a preview of the Python code that will be
+generated for each override.
+
+.. note::
+    Note that Render+ doesn’t check for value types or valid ranges, double
+    check your data is valid! Also, don’t forget to add quotes to your
+    strings (eg. “my_string”)
+
+
+What are Datapaths exactly?
+==================
+
+All properties in Blender are organized in different modules and
+objects. Properties inside objects can be accessed with the dot syntax
+like so, ``bpy.module.object.property``. Properties can be objects, or
+collections of objects and properties.
+
+For an in-depth explanation and examples check the [Blender
+documentation]
+(https://docs.blender.org/api/current/info_api_reference.html)
+
+Data paths relative to scene settings start with ``bpy.context.scene``.
+To get any property in the scene
+You can right-click on any property and select ``Copy Data Path``. You can
+then go into the data path input and paste it there (Ctrl+v).
+
+If the property comes from an object in the scene, you’ll have
+to use ``bpy.data.objects[OBJECT_NAME]`` before the path. Change
+``OBJECT_NAME`` to the name of the object you’re getting the property
+from.
+
+Custom Override examples
+========================
+
+``bpy.context.scene.render.engine = ‘CYCLES’``
+
+Set render engine to Cycles
+
+--------------
+
+``bpy.data.objects[‘Lamp’].hide_render = True``
+
+Hide object called “Lamp” for render
+
+--------------
+
+``bpy.data.objects[‘Cube’].material_slots[‘Material’].material =
+bpy.data.materials[‘New_mat’]``
+
+Set “New_mat” as material for “Cube” object

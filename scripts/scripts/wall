@@ -83,7 +83,7 @@ rofi_selection() {
   fi
 
   if matugen --prefer darkness image "$selected_img"; then
-    echo "$base_cmd $selected_img" > "$file"1yyyyyy
+    echo "$base_cmd $selected_img" > "$file"
     notify-send "Wallchanger" "Applied wallpaper: $selected_wall"
   else
     notify-send "ERROR: Failed to apply wallpaper"

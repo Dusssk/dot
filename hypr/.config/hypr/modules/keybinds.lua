@@ -17,6 +17,7 @@ hl.bind(mainMod .. "M", hl.dsp.exec_cmd("~/.config/rofi/launchers/powermenu.sh")
 hl.bind(mainMod .. "E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. "V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu -p Clipboard | cliphist decode | wl-copy"))
 hl.bind(mainMod .. "R", hl.dsp.exec_cmd(menu))
+hl.bind(shiftMod .. "W", hl.dsp.exec_cmd("~/scripts/wall -ia"))
 
 hl.bind(shiftMod .. "S", hl.dsp.exec_cmd("hyprshot -z -m region --clipboard-only"))
 
@@ -37,13 +38,13 @@ hl.bind(shiftMod .. "k", hl.dsp.window.move({ direction = "u" }))
 hl.bind(shiftMod .. "l", hl.dsp.window.move({ direction = "r" }))
 
 hl.bind(mainMod .. "X", function()
-  if hl.get_workspace("special:minimized") then
-    hl.dispatch(hl.dsp.window.move({ workspace = hl.get_active_workspace(), window = "tag:minimized" }))
-    hl.dispatch(hl.dsp.window.clear_tags({ window = "tag:minimized" }))
-  else
-    hl.dispatch(hl.dsp.window.tag({ tag = "minimized", window = hl.get_active_window() }))
-    hl.dispatch(hl.dsp.window.move({ workspace = "special:minimized", follow = false }))
-  end
+    if hl.get_workspace("special:minimized") then
+        hl.dispatch(hl.dsp.window.move({ workspace = hl.get_active_workspace(), window = "tag:minimized" }))
+        hl.dispatch(hl.dsp.window.clear_tags({ window = "tag:minimized" }))
+    else
+        hl.dispatch(hl.dsp.window.tag({ tag = "minimized", window = hl.get_active_window() }))
+        hl.dispatch(hl.dsp.window.move({ workspace = "special:minimized", follow = false }))
+    end
 end)
 
 -- Unbinds
@@ -51,14 +52,14 @@ hl.unbind(mainMod .. "J")
 hl.unbind(mainMod .. "K")
 
 for i = 1, 10 do
-  local key = i % 10 -- 10 maps to key 0
-  if is_fr then
-    key = fr_keys[i]
-  end
-  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), { description = "Focus workspace " .. i })
-  hl.bind(shiftMod .. " + " .. key, hl.dsp.window.move({ workspace = i }),
-    { description = "Move window to workspace " .. i })
-  -- Silent version (ALT + key)
-  hl.bind(altMod .. " + " .. key, hl.dsp.window.move({ workspace = i, follow = false }),
-    { description = "Move window to workspace " .. i .. " silently" })
+    local key = i % 10 -- 10 maps to key 0
+    if is_fr then
+        key = fr_keys[i]
+    end
+    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), { description = "Focus workspace " .. i })
+    hl.bind(shiftMod .. " + " .. key, hl.dsp.window.move({ workspace = i }),
+        { description = "Move window to workspace " .. i })
+    -- Silent version (ALT + key)
+    hl.bind(altMod .. " + " .. key, hl.dsp.window.move({ workspace = i, follow = false }),
+        { description = "Move window to workspace " .. i .. " silently" })
 end

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Batch Server API &mdash; Render+ 2.6.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/custom_renderplus.css?v=7c6f6b38" />
+
+  
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=3db9c557"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Quick Batch" href="quick_batch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Render+
+              <img src="_static/logo_sidebar.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preferences.html">Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_settings.html">General Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch Renders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_batch.html">Quick Batch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Batch Server API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Render+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Batch Server API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="batch-server-api">
+<h1>Batch Server API<a class="headerlink" href="#batch-server-api" title="Link to this heading"></a></h1>
+<p>Render+’s batch server uses a REST API to start, cancel or poll batches.</p>
+<section id="routes">
+<h2>Routes<a class="headerlink" href="#routes" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Route</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/batch/recipe</p></td>
+<td><p>POST</p></td>
+<td><p>Submit a batch recipe</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch/file</p></td>
+<td><p>POST</p></td>
+<td><p>Upload a blendfile</p></td>
+</tr>
+<tr class="row-even"><td><p>/batch/start</p></td>
+<td><p>GET</p></td>
+<td><p>Start the batch</p></td>
+</tr>
+<tr class="row-odd"><td><p>/test</p></td>
+<td><p>GET</p></td>
+<td><p>Get batch server information</p></td>
+</tr>
+<tr class="row-even"><td><p>/batch</p></td>
+<td><p>GET</p></td>
+<td><p>Query the batch status</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch/ready</p></td>
+<td><p>GET</p></td>
+<td><p>Determine if the server can run a batch</p></td>
+</tr>
+<tr class="row-even"><td><p>/batch</p></td>
+<td><p>DELETE</p></td>
+<td><p>Cancel the current batch</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch/name</p></td>
+<td><p>GET</p></td>
+<td><p>Query the batch’s name (blend file)</p></td>
+</tr>
+<tr class="row-even"><td><p>/batch/jobs/{id}</p></td>
+<td><p>GET</p></td>
+<td><p>Query the status of a specific render job</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch/jobs/current</p></td>
+<td><p>DELETE</p></td>
+<td><p>Cancel the render job currently running</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="manually-starting-the-server">
+<h2>Manually starting the server<a class="headerlink" href="#manually-starting-the-server" title="Link to this heading"></a></h2>
+<p>The server can be started using the command line by going to the addon
+folder and running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">server</span>
+</pre></div>
+</div>
+<p>The server has several parameters that can be used. You can get a list
+of them with the <code class="docutils literal notranslate"><span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> parameters.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">server</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">recipe</span> <span class="n">RECIPE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">dry</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">check</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">serve</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span> <span class="o">&gt;</span><span class="mi">1024</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">poll</span><span class="p">]</span>
+              <span class="p">[</span><span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">gpus</span> <span class="n">LIST_GPUS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">poll</span><span class="o">-</span><span class="n">job</span> <span class="n">POLL_JOB</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">cancel</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">cancel</span><span class="o">-</span><span class="n">job</span><span class="p">]</span>
+              <span class="p">[</span><span class="o">--</span><span class="n">stop</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">stats</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cleanup</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">write</span><span class="o">-</span><span class="n">log</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">debug</span><span class="p">]</span>
+              <span class="p">[</span><span class="o">--</span><span class="n">version</span><span class="p">]</span>
+
+<span class="n">Render</span><span class="o">+</span> <span class="n">Batch</span> <span class="n">rendering</span> <span class="n">server</span><span class="o">.</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">recipe</span> <span class="n">RECIPE</span>       <span class="n">A</span> <span class="n">JSON</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">a</span> <span class="n">batch</span> <span class="nb">list</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">dry</span>                 <span class="n">Dry</span> <span class="n">Run</span> <span class="p">(</span><span class="n">only</span> <span class="nb">print</span> <span class="n">stats</span> <span class="ow">and</span> <span class="n">commands</span><span class="p">)</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">check</span>               <span class="n">Check</span> <span class="k">if</span> <span class="n">commands</span> <span class="ow">and</span> <span class="n">files</span> <span class="n">are</span> <span class="n">OK</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">serve</span>               <span class="n">Start</span> <span class="n">the</span> <span class="n">server</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">port</span> <span class="p">(</span><span class="o">&gt;</span><span class="mi">1024</span><span class="p">)</span>        <span class="n">Change</span> <span class="n">port</span> <span class="n">to</span> <span class="n">use</span> <span class="n">when</span> <span class="n">running</span> <span class="n">server</span><span class="o">.</span> <span class="n">Default</span> <span class="ow">is</span> <span class="mi">7777</span>
+  <span class="o">--</span><span class="n">poll</span>                <span class="n">Poll</span> <span class="n">a</span> <span class="n">running</span> <span class="n">batch</span><span class="o">.</span>
+  <span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">gpus</span> <span class="n">LIST_GPUS</span>
+                        <span class="n">List</span> <span class="n">available</span> <span class="n">GPUs</span> <span class="p">(</span><span class="n">needs</span> <span class="n">a</span> <span class="n">Blender</span> <span class="n">binary</span> <span class="n">file</span><span class="p">)</span>
+  <span class="o">--</span><span class="n">poll</span><span class="o">-</span><span class="n">job</span> <span class="n">POLL_JOB</span>   <span class="n">Poll</span> <span class="n">a</span> <span class="n">specific</span> <span class="n">render</span> <span class="n">job</span>
+  <span class="o">--</span><span class="n">cancel</span>              <span class="n">Cancel</span> <span class="n">the</span> <span class="n">running</span> <span class="n">batch</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">cancel</span><span class="o">-</span><span class="n">job</span>          <span class="n">Cancel</span> <span class="n">the</span> <span class="n">current</span> <span class="n">render</span> <span class="n">job</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">stop</span>                <span class="n">Stop</span> <span class="n">the</span> <span class="n">server</span><span class="o">.</span>
+  <span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">stats</span>         <span class="n">Print</span> <span class="n">batch</span> <span class="n">stats</span> <span class="n">after</span> <span class="n">finishing</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cleanup</span>          <span class="n">Don</span><span class="s1">&#39;t clean up temp folder after running.</span>
+  <span class="o">--</span><span class="n">write</span><span class="o">-</span><span class="n">log</span>           <span class="n">Write</span> <span class="n">a</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">logs</span> <span class="n">folder</span><span class="o">.</span>
+  <span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">debug</span>         <span class="n">Print</span> <span class="n">debug</span> <span class="n">logs</span>
+  <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">program</span><span class="s1">&#39;s version number and exit</span>
+</pre></div>
+</div>
+</section>
+<section id="starting-a-batch">
+<h2>Starting a Batch<a class="headerlink" href="#starting-a-batch" title="Link to this heading"></a></h2>
+<p>Before starting a batch we need to submit a <strong>recipe</strong>. This can be done
+by sending a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request to <code class="docutils literal notranslate"><span class="pre">http://localhost:[PORT]/batch/recipe</span></code>.</p>
+<p>The data sent to start a batch is called a <strong>recipe</strong> and is a
+dictionary with a specific set of keys. Check out the sample below. You
+can see how Render+ generates these by looking at the contents of the
+recipe module. Look for the <code class="docutils literal notranslate"><span class="pre">recipe.py</span></code> file inside the batch folder.</p>
+<p>The data should be a JSON dictionary, and <code class="docutils literal notranslate"><span class="pre">Content-type</span></code> should be set to
+<code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
+<section id="recipe-sample">
+<h3>Recipe sample<a class="headerlink" href="#recipe-sample" title="Link to this heading"></a></h3>
+<p>Here’s a sample of a Batch recipe with 1 render job. Note that <code class="docutils literal notranslate"><span class="pre">jobs</span></code>
+is a list of dictionaries.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/user/batch.blend&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rss&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/user/feed.rss&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;global_percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;global_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;write_log&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ignore_border&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;blender_bin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/bin/blender&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hooks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;PRE_BATCH&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;POST_BATCH&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;poweroff&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DISABLED&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;notifications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;desktop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sound&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/user/.config/blender/2.80/scripts/addons/renderplus/assets/notification.ogg&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;volume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;mail&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some@somemail.com&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ssl&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my@real-mail.com&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;smtp.mail.com&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;jobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Some job&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/user/render_Untitled_Scene&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;external&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;blendfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blendname.blend&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/user/blendname.blend&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;animated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BLENDER_EEVEE&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;threads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hooks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;PRE_JOB&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo &#39;pre_job&#39;&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;POST_JOB&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo &#39;post_job&#39;&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;blend_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/user/batch.blend&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;scene&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Scene&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;camera&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Camera&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;world&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;World&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;frame_still&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;frame_start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;frame_end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PNG&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;cycles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;device&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEFAULT&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;custom_overrides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="polling">
+<h2>Polling<a class="headerlink" href="#polling" title="Link to this heading"></a></h2>
+<p>To poll the batch’s status send a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request to
+<code class="docutils literal notranslate"><span class="pre">http://localhost:[PORT]/batch</span></code>. The response will have a HTTP status
+code of 200 and contain a JSON dictionary. You can also request data for
+a single job only using <code class="docutils literal notranslate"><span class="pre">http://localhost:[PORT]/batch/jobs/[ID]</span></code>.
+Where ID is the number of the job in the list, starting from zero.</p>
+<p>The batch’s name is available by requesting
+<code class="docutils literal notranslate"><span class="pre">http://localhost:[PORT]/batch/name</span></code>.</p>
+<section id="poll-response-example">
+<h3>Poll Response example<a class="headerlink" href="#poll-response-example" title="Link to this heading"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RUNNING&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;times&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;started&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1545401461.3625693</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;finished&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rendertime&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;stats&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;slowest_index&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;slowest_time&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fastest_index&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fastest_time&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_time&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;messages&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;jobs&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RUNNING&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;times&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;started&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1545401461.3666012</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;finished&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rendertime&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;messages&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;progress&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">9.765625</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;engine&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BLENDER_EEVEE&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;frame&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mem&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.56M&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;elapsed&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00:00.42&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;samples_done&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;25&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;samples_todo&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;256&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DISABLED&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;times&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;started&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;finished&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rendertime&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;messages&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;progress&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;engine&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QUEUED&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;times&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;started&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;finished&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rendertime&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;messages&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;progress&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;engine&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;current_job&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>status</strong>: Can be either <code class="docutils literal notranslate"><span class="pre">WAITING</span></code>, <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, <code class="docutils literal notranslate"><span class="pre">FINISHED</span></code> or,
+<code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>. If a batch has been run the status will be either
+<code class="docutils literal notranslate"><span class="pre">FINISHED</span></code> or <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>. If no batch has been run the status
+will be <code class="docutils literal notranslate"><span class="pre">WAITING</span></code>.</p></li>
+<li><p><strong>current_job</strong>: ID of the renderjob currently being rendered</p></li>
+<li><p><strong>messages</strong>: Usually empty. Sometimes used for error messages.</p></li>
+<li><p><strong>times</strong>: Start, finish and render times for the whole batch.
+Finished and rendertime will be null while the batch is running.</p></li>
+<li><p><strong>stats</strong>: Contains average rendertime, as well as fastest and
+slowest jobs. All these will be null while the batch is running or if
+the batch is cancelled.</p></li>
+<li><p><strong>jobs</strong>: A list with the status of each job.</p></li>
+</ul>
+<p>A render job has the following keys:</p>
+<ul class="simple">
+<li><p><strong>id</strong>: The ID for the render job</p></li>
+<li><p><strong>status</strong>: <code class="docutils literal notranslate"><span class="pre">QUEUED</span></code>, <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>, <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, <code class="docutils literal notranslate"><span class="pre">FINISHED</span></code> or
+<code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code></p></li>
+<li><p><strong>times</strong>: Start, finish and render times for the job</p></li>
+<li><p><strong>messages</strong>: Usually empty. Used for error messages when the job
+fails</p></li>
+<li><p><strong>progress</strong>: An integer in the rage 0…100 representing the progress
+of the render</p></li>
+<li><p><strong>engine</strong>: A dictionary containing two items: <em>Type</em> (name of the
+render engine or <code class="docutils literal notranslate"><span class="pre">NON_COMPATIBLE</span></code>) and <em>data</em> with data pulled from
+the render engine’s <code class="docutils literal notranslate"><span class="pre">stdout</span></code></p></li>
+</ul>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">NON_COMPATIBLE</span></code> doesn’t mean it won’t render, but only that
+Render+ doesn’t know how to get information from the engine. The data
+key can have different keys depending on the engine.</p>
+</section>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Link to this heading"></a></h2>
+<p>In case of errors the routes will return an error HTTP code and a
+dictionary with more information. Requesting for an invalid route will
+return a 404.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Route</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>HTTP Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/batch</p></td>
+<td><p>POST</p></td>
+<td><p>406</p></td>
+<td><p>Wrong
+content-type
+sent (must be
+JSON)</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch</p></td>
+<td><p>POST</p></td>
+<td><p>409</p></td>
+<td><p>Can’t start
+because a batch
+is already
+running</p></td>
+</tr>
+<tr class="row-even"><td><p>/batch</p></td>
+<td><p>GET</p></td>
+<td><p>409</p></td>
+<td><p>Can’t poll
+because no
+batch has been
+run</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch/jobs/{id
+}</p></td>
+<td><p>GET</p></td>
+<td><p>409</p></td>
+<td><p>Can’t poll
+because no
+batch has been
+run</p></td>
+</tr>
+<tr class="row-even"><td><p>/batch/jobs/{id
+}</p></td>
+<td><p>GET</p></td>
+<td><p>400</p></td>
+<td><p>Wrong or
+missing index
+of job to poll</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch/name</p></td>
+<td><p>GET</p></td>
+<td><p>409</p></td>
+<td><p>Can’t poll
+because no
+batch has been
+run</p></td>
+</tr>
+<tr class="row-even"><td><p>/batch</p></td>
+<td><p>DELETE</p></td>
+<td><p>409</p></td>
+<td><p>Can’t cancel
+because no
+batch is
+running</p></td>
+</tr>
+<tr class="row-odd"><td><p>/batch/jobs/cur
+rent</p></td>
+<td><p>DELETE</p></td>
+<td><p>409</p></td>
+<td><p>Can’t cancel
+because no
+batch is
+running</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here’s an example of an error response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Not running a batch right now&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When a job fails it doesn’t produce an error message. It’s status is set
+to <code class="docutils literal notranslate"><span class="pre">FAILED</span></code>.</p>
+</section>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h2>
+<p>Batch server logs are different from the addon’s logs, and they are only
+written if you use the <code class="docutils literal notranslate"><span class="pre">--write-logs</span></code> parameter when starting the
+server. They are written to the <strong>server/log</strong> folder. The server writes
+a new log file every time it is started. The filename format is
+<code class="docutils literal notranslate"><span class="pre">renderplus_[day]-[month]-[year]-[hour]-[minute]-[seconds]</span></code></p>
+</section>
+<section id="stopping-the-server">
+<h2>Stopping the server<a class="headerlink" href="#stopping-the-server" title="Link to this heading"></a></h2>
+<p>To stop the server press <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code> while it’s running.</p>
+</section>
+<section id="listing-gpus">
+<span id="listinggpu"></span><h2>Listing GPUs<a class="headerlink" href="#listing-gpus" title="Link to this heading"></a></h2>
+<p>To find a list of GPUs available to Blender in your system and their numbers
+you can pass the <code class="docutils literal notranslate"><span class="pre">--list-gpus</span></code> setting to the server.</p>
+<p>This parameter needs a path to the Blender binary you want to use for batch
+rendering.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>▶ python3 server --list-gpus /usr/bin/Blender
+
+Blender 2.90.0 (hash 0330d1af29c0 built 2020-08-31 11:54:54)
+Read prefs: /home/januz/.config/blender/2.90/config/userpref.blend
+found bundled python: /home/januz/down/blender-2.90.0-linux64/2.90/python
+
+GPUS AVAILABLE FOR RENDERING
+--------------------------------------------------------------------------------
+Radeon RX Vega 56 | Number: 0
+
+Blender quit
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick_batch.html" class="btn btn-neutral float-left" title="Quick Batch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016 and onwards, Diego Gangl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+Installation
+============
+
+1. Download the latest Render+ zip file
+2. Open Blender and go to the **User Preferences** (In the *Edit* menu)
+3. In the *Addons* tab, click the ``Install from File`` button at the
+   bottom and select the zip file you downloaded
+
+Once you have enabled the addon you will find the **preferences** below
+it. Head over to the next section to find out more.

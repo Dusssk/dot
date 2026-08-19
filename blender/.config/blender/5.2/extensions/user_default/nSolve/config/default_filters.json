@@ -1,0 +1,10 @@
+{
+    "behavior_filter_all": false,
+    "behavior_filters": [
+        {"show": true, "name": "view3d", "filter": ""},
+        {"show": true, "name": "transform", "filter": ""},
+        {"show": true, "name": "mesh", "filter": ""},
+        {"show": true, "name": "bc", "filter": ""},
+        {"show": true, "name": "hops", "filter": ""}
+    ]
+}

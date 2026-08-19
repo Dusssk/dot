@@ -1,0 +1,27 @@
+Glossary
+========
+
+**RSS**
+    Really Simple Syndication is a type of web feed. You can use RSS to keep
+    track of news, blogs or your batches.
+
+**API**
+    Application programming interface (API) is a set of communication
+    protocols and tools for building software.
+
+**REST API**
+    Representational State Transfer (REST) is a software architectural style
+    that defines a set of constraints to be used for web services APIs.
+
+**Terminal**
+    A terminal (sometimes called a Console) is an application in which you
+    can type and execute text based commands. In Blender you can use it to
+    check the output of addons and errors.
+
+**Python Console**
+    The Python console is an editor in Blender (found under the *Scripting*
+    column).
+
+**SMTP server**
+    Simple Mail Transfer Protocol (SMTP) is an internet standard for sending
+    emails. SMTP servers take care of sending emails through this protocol.

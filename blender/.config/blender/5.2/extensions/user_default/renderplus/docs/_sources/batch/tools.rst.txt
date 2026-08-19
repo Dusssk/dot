@@ -1,0 +1,60 @@
+Tools
+-----
+
+Change settings to other render jobs
+====================================
+
+.. image:: ../_static/screens/change_tool.png
+
+This tool opens up a dialog that will let you copy settings from one
+render job to all the others.
+
+This saves you time when working with large lists of render jobs.
+
+Supported settings right now are:
+
+- Scene
+- Camera
+- World
+- Layer
+- Animation
+- Custom Frame
+- Frame
+- File Format
+
+
+Change output paths
+===================
+
+This option lets you change the output path of all render jobs at once.
+
+This is done by first setting a ``Base Directory``. This will be the
+base folder for all renders.
+
+Next you can select what ``Sub directories`` to create (or not). You can
+organize renders into different directories by their scene, camera or
+view layer.
+
+Next you can select the ``base filename`` and its ``suffixes``. The base
+file name can be anything you want (as long as it is a valid file name).
+You can add up to three suffixes to it: Camera, Scene, or Renderlayer.
+Suffixes are added after an underscore like this: “my-render_camera”.
+
+You can see a sample of an output path using the data from the first
+render job at the end. Once you are happy with the resulting outputs,
+click the ``Change Outputs`` button to set them.
+
+Note that you can undo this action.
+
+Previous Batch Results
+======================
+
+If you keep Blender open while running a batch, you can access a log of
+the previous batch once it has finished.
+
+Once the batch is complete, click the menu button next to the renderjob
+list and look for the ``Previous Batch Results`` button.
+
+You can check out the start, finish and total rendertimes for the batch
+and for each job. You can also see some statistics about the batch
+including the average rendertime and
